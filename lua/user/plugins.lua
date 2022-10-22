@@ -67,11 +67,18 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
 
   -- Colorschemes
-  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "folke/tokyonight.nvim" -- more colorschemes
+  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use "folke/tokyonight.nvim"
   use "lunarvim/darkplus.nvim"
-  use "rose-pine/neovim"
-
+  use {
+    "navarasu/onedark.nvim",
+    -- require('onedark').setup {
+    -- style = 'deep'
+-- }
+  }
+  use "EdenEast/nightfox.nvim"
+  use "rebelot/kanagawa.nvim"
+  use "morhetz/gruvbox"
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
