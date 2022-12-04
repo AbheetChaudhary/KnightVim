@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
@@ -28,7 +28,22 @@ vim.cmd [[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
-]]
+
+"   augroup collumnLimit
+"   autocmd!
+"   autocmd BufEnter,WinEnter,FileType scala,java,python
+"         \ highlight CollumnLimit ctermbg=DarkGrey guibg=DarkGrey
+"   let collumnLimit = 80 " feel free to customize
+"   let pattern =
+"         \ '\%<' . (collumnLimit+1) . 'v.\%>' . collumnLimit . 'v'
+"   autocmd BufEnter,WinEnter,FileType scala,java,python
+"         \ let w:m1=matchadd('CollumnLimit', pattern, -1)
+" augroup END
+
+ autocmd BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=python
+ autocmd Filetype python set tabstop=4|set shiftwidth=4|set expandtab
+ autocmd FileType python set makeprg=sage\ -b\ &&\ sage\ -t\ %
+]])
 
 -- Autoformat
 -- augroup _lsp

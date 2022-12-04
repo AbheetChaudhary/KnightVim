@@ -21,7 +21,7 @@ local diff = {
 	"diff",
 	colored = true,
 	symbols = { added = "+", modified = "~", removed = "-" }, -- changes diff symbols
-  cond = hide_in_width
+	cond = hide_in_width,
 }
 
 local mode = {
@@ -45,7 +45,7 @@ local branch = {
 
 local location = {
 	"location",
-  -- color = { fg = '#ffaa88', bg = 'grey', gui='italic,bold' },
+	-- color = { fg = '#ffaa88', bg = 'grey', gui='italic,bold' },
 	padding = 0,
 }
 
@@ -66,11 +66,16 @@ end
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "onedark",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+		theme = "auto",
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
+		disabled_filetypes = { "alpha", "dashboard", "Outline" },
 		always_divide_middle = true,
+    refresh = {
+    statusline = 1000,
+    tabline = 1000,
+    winbar = 1000,
+    }
 	},
 	sections = {
 		lualine_a = { branch, diagnostics },

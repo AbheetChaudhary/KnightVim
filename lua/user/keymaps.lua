@@ -36,6 +36,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<c-PageDown>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<c-PageUp>", ":bprevious<CR>", opts)
+keymap("n", "<a-w>", "<cmd>Bdelete!<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -63,7 +64,6 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Misc
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise()<CR>", opts)
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-keymap("n", "<a-w>", "<cmd>Bdelete!<CR>", opts)
 
 
 -- Better terminal navigation
@@ -95,4 +95,9 @@ keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
 keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "<leader>ld", "<cmd>Telescope diagnostics<cr>", opts)
 
+-- Harpoon
+keymap("n", "<leader>pm", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
+keymap("n", "<leader>pq", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
 
+keymap("n", "<leader>pn", "<cmd>lua require('harpoon.ui').nav_next()<CR>", opts)
+keymap("n", "<leader>pp", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", opts)
