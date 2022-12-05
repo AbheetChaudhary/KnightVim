@@ -77,7 +77,7 @@ return packer.startup(function(use)
 		-- }
 		commit = "cad3d98",
 	})
-  use ({ "dracula/vim", as = 'dracula'})
+	use({ "dracula/vim", as = "dracula" })
 	use({ "EdenEast/nightfox.nvim", commit = "db26a92" })
 	use({ "rebelot/kanagawa.nvim", commit = "70d3139" })
 	use({ "morhetz/gruvbox", commit = "bf2885a" })
@@ -102,6 +102,10 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim", commit = "9784730" })
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	})
 
 	-- Treesitter
 	use({
@@ -120,11 +124,11 @@ return packer.startup(function(use)
 	use({ "ravenxrz/DAPInstall.nvim", commit = "8798b4c" })
 	-- use "Pocco81/dap-buddy.nvim"
 
-  -- nvim notify
-  use({"rcarriga/nvim-notify"})
+	-- nvim notify
+	use({ "rcarriga/nvim-notify" })
 
-  -- logging
-  use { "Tastyep/structlog.nvim" }
+	-- logging
+	use({ "Tastyep/structlog.nvim" })
 
 	use({
 		"phaazon/hop.nvim",

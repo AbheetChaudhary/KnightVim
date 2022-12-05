@@ -81,7 +81,7 @@ keymap("n", "<leader>sf", "<cmd>lua require'telescope.builtin'.find_files(requir
 keymap("n", "<leader>st", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>sp", "<cmd>Telescope projects<cr>", opts)
 keymap("n", "<leader>sk", "<cmd>Telescope keymaps<cr>", opts)
-keymap("n", "<leader>sb", "<cmd>Telescope buffers<cr>", opts)
+keymap("n", "<leader>sb", "<cmd>Telescope buffers theme=dropdown<cr>", opts)
 keymap("n", "<leader>sc", "<cmd>Telescope commands<cr>", opts)
 keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", opts)
 
