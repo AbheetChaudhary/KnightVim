@@ -2,6 +2,9 @@ local hop = require("hop")
 
 local directions = require("hop.hint").HintDirection
 
+hop.setup({
+	keys = "etovxqpdygfblzhckisuran",
+})
 -- Normal Mode
 vim.keymap.set("n", "f", function()
 	hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })

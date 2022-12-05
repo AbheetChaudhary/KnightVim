@@ -120,14 +120,20 @@ return packer.startup(function(use)
 	use({ "ravenxrz/DAPInstall.nvim", commit = "8798b4c" })
 	-- use "Pocco81/dap-buddy.nvim"
 
+  -- nvim notify
+  use({"rcarriga/nvim-notify"})
+
+  -- logging
+  use { "Tastyep/structlog.nvim" }
+
 	use({
 		"phaazon/hop.nvim",
 		commit = "90db1b2",
 		branch = "v2", -- optional but strongly recommended
-		config = function()
-			-- you can configure Hop the way you like here; see :h hop-config
-			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-		end,
+		-- config = function()
+		-- 	-- you can configure Hop the way you like here; see :h hop-config
+		-- 	require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+		-- end,
 	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
