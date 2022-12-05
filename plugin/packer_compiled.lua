@@ -139,6 +139,11 @@ _G.packer_plugins = {
     path = "/home/goliath/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
   },
+  dracula = {
+    loaded = true,
+    path = "/home/goliath/.local/share/nvim/site/pack/packer/start/dracula",
+    url = "https://github.com/dracula/vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/goliath/.local/share/nvim/site/pack/packer/start/friendly-snippets",
