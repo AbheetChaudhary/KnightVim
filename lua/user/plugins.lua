@@ -47,78 +47,81 @@ return packer.startup(function(use)
 	-- being in "start" folder they start automatically. "Start" folder contains cloned repos of plugins which have "lua" directory in them where all the useful settings reside
 	-- My plugins here
 
-	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-	use("numToStr/Comment.nvim") -- Easily comment stuff
-	use("akinsho/bufferline.nvim")
-  use("ThePrimeagen/harpoon")
-	use("moll/vim-bbye")
-	use("ahmedkhalf/project.nvim")
-	use("nvim-lualine/lualine.nvim")
+	use({ "wbthomason/packer.nvim", commit = "6afb674" }) -- Have packer manage itself
+	use({ "nvim-lua/popup.nvim", commit = "b7404d3" }) -- An implementation of the Popup API from vim in Neovim
+	use({ "windwp/nvim-autopairs", commit = "6b6e35f" }) -- Autopairs, integrates with both cmp and treesitter
+	use({ "numToStr/Comment.nvim", commit = "ad7ffa8" }) -- Easily comment stuff
+	use({ "akinsho/bufferline.nvim", commit = "028a879" })
+	use({ "ThePrimeagen/harpoon", commit = "21d0d1b" })
+	use({ "moll/vim-bbye", commit = "25ef93a" })
+	use({ "ahmedkhalf/project.nvim", commit = "685bc8e" })
+	use({ "nvim-lualine/lualine.nvim", commit = "3325d5d" })
 	use({ "akinsho/toggleterm.nvim", commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda" })
 	--   use "folke/which-key.nvim"
-	use("lukas-reineke/indent-blankline.nvim")
-	use("lewis6991/impatient.nvim")
-	use("goolord/alpha-nvim")
-	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
-	use("kyazdani42/nvim-web-devicons")
-	use("kyazdani42/nvim-tree.lua")
-	use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins
+	use({ "lukas-reineke/indent-blankline.nvim", commit = "db7cbcb" })
+	use({ "lewis6991/impatient.nvim", commit = "b842e16" })
+	use({ "goolord/alpha-nvim", commit = "0bb6fc0" })
+	use({ "antoinemadec/FixCursorHold.nvim", commit = "70a9516" }) -- This is needed to fix lsp doc highlight
+	use({ "kyazdani42/nvim-web-devicons", commit = "9061e2d" })
+	use({ "kyazdani42/nvim-tree.lua", commit = "3845039" })
+	use({ "nvim-lua/plenary.nvim", commit = "4b7e520" }) -- Useful lua functions used by lots of plugins
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-	use("folke/tokyonight.nvim")
-	use("lunarvim/darkplus.nvim")
+	use({ "folke/tokyonight.nvim", commit = "29e2c68" })
+	use({ "lunarvim/darkplus.nvim", commit = "f20cba5" })
 	use({
 		"navarasu/onedark.nvim",
 		-- require('onedark').setup {
 		-- style = 'deep'
 		-- }
+		commit = "cad3d98",
 	})
-	use("EdenEast/nightfox.nvim")
-	use("rebelot/kanagawa.nvim")
-	use("morhetz/gruvbox")
+	use({ "EdenEast/nightfox.nvim", commit = "db26a92" })
+	use({ "rebelot/kanagawa.nvim", commit = "70d3139" })
+	use({ "morhetz/gruvbox", commit = "bf2885a" })
 	-- cmp plugins
-	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- buffer completions
-	use("hrsh7th/cmp-path") -- path completions
-	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
-	use("hrsh7th/cmp-nvim-lsp") -- its an extra source for cmp. Its the [LSP] one
-	use("hrsh7th/cmp-nvim-lua")
+	use({ "hrsh7th/nvim-cmp", commit = "9bb8ee6" }) -- The completion plugin
+	use({ "hrsh7th/cmp-buffer", commit = "3022dbc" }) -- buffer completions
+	use({ "hrsh7th/cmp-path", commit = "91ff86c" }) -- path completions
+	use({ "hrsh7th/cmp-cmdline", commit = "c66c379" }) -- cmdline completions
+	use({ "saadparwaiz1/cmp_luasnip", commit = "1809552" }) -- snippet completions
+	use({ "hrsh7th/cmp-nvim-lsp", commit = "78924d1" }) -- its an extra source for cmp. Its the [LSP] one
+	use({ "hrsh7th/cmp-nvim-lua", commit = "d276254" })
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	use({ "L3MON4D3/LuaSnip", commit = "663d544" }) --snippet engine
+	use({ "rafamadriz/friendly-snippets", commit = "c93311f" }) -- a bunch of snippets to use
 
 	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-	use("RRethy/vim-illuminate") -- highlight matching texts when cursor is on it
+	use({ "neovim/nvim-lspconfig", commit = "67f0d00" }) -- enable LSP
+	use({ "williamboman/nvim-lsp-installer", commit = "23820a8" }) -- simple to use language server installer
+	use({ "jose-elias-alvarez/null-ls.nvim", commit = "f1add23" }) -- for formatters and linters
+	use({ "RRethy/vim-illuminate", commit = "0603e75" }) -- highlight matching texts when cursor is on it
 
 	-- Telescope
-	use("nvim-telescope/telescope.nvim")
+	use({ "nvim-telescope/telescope.nvim", commit = "9784730" })
 
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
+		commit = "5d11dfc2",
 	})
-	use("p00f/nvim-ts-rainbow")
+	use({ "p00f/nvim-ts-rainbow", commit = "1ec3f88" })
 
 	-- Git
-	use("lewis6991/gitsigns.nvim")
+	use({ "lewis6991/gitsigns.nvim", commit = "9110ea1" })
 
 	-- Debugging
-	use("mfussenegger/nvim-dap")
-	use("rcarriga/nvim-dap-ui")
-	use("ravenxrz/DAPInstall.nvim")
+	use({ "mfussenegger/nvim-dap", commit = "3d0d731" })
+	use({ "rcarriga/nvim-dap-ui", commit = "f889edb" })
+	use({ "ravenxrz/DAPInstall.nvim", commit = "8798b4c" })
 	-- use "Pocco81/dap-buddy.nvim"
 
 	use({
 		"phaazon/hop.nvim",
+		commit = "90db1b2",
 		branch = "v2", -- optional but strongly recommended
 		config = function()
 			-- you can configure Hop the way you like here; see :h hop-config
