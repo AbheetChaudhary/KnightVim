@@ -47,45 +47,28 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup({
+	enabled = function()
+		-- disable completion in comments
+		local context = require("cmp.config.context")
+		-- keep command mode completion enabled when cursor is in a comment
+		if vim.api.nvim_get_mode().mode == "c" then
+			return true
+		else
+			return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+		end
+	end,
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
 	mapping = {
-		-- ["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-k>"] = cmp.mapping({
-			i = function()
-				if cmp.visible() then
-					-- require("notify")("visible")
-					cmp.abort()
-				else
-					-- require("notify")("not visible")
-					cmp.complete()
-				end
-			end,
-			c = function()
-				if cmp.visible() then
-					-- require("notify")("visible")
-					cmp.close()
-				else
-					-- require("notify")("not visible")
-					cmp.complete()
-				end
-			end,
-		}),
-		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		["<C-e>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
-		-- Accept currently selected item. If none selected, `select` first item.
-		-- Set `select` to `false` to only confirm explicitly selected items.
+		["<C-k>"] = cmp.mapping.select_prev_item(),
+		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
