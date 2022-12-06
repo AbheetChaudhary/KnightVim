@@ -5,8 +5,74 @@ end
 
 local actions = require("telescope.actions")
 
+local previewers = require("telescope.previewers")
+local Job = require("plenary.job")
+
+local ts_select_dir_for_grep = function(prompt_bufnr)
+	local action_state = require("telescope.actions.state")
+	local fb = require("telescope").extensions.file_browser
+	local live_grep = require("telescope.builtin").live_grep
+	local current_line = action_state.get_current_line()
+
+	fb.file_browser({
+		files = false,
+		depth = false,
+		attach_mappings = function(prompt_bufnr)
+			require("telescope.actions").select_default:replace(function()
+				local entry_path = action_state.get_selected_entry().Path
+				local dir = entry_path:is_dir() and entry_path or entry_path:parent()
+				local relative = dir:make_relative(vim.fn.getcwd())
+				local absolute = dir:absolute()
+
+				live_grep({
+					results_title = relative .. "/",
+					cwd = absolute,
+					default_text = current_line,
+				})
+			end)
+
+			return true
+		end,
+	})
+end
+
+local new_maker = function(filepath, bufnr, opts)
+	-- dont preview binaries
+	filepath = vim.fn.expand(filepath)
+	Job:new({
+		command = "file",
+		args = { "--mime-type", "-b", filepath },
+		on_exit = function(j)
+			local mime_type = vim.split(j:result()[1], "/")[1]
+			if mime_type == "text" then
+				previewers.buffer_previewer_maker(filepath, bufnr, opts)
+			else
+				-- maybe we want to write something to the buffer here
+				vim.schedule(function()
+					vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" })
+				end)
+			end
+		end,
+	}):sync()
+
+	-- Ignore files larger than a fixed size
+
+	--[[ opts = opts or {}
+	vim.loop.fs_stat(filepath, function(_, stat)
+		if not stat then
+			return
+		end
+		if stat.size > 100 then
+			return
+		else
+			previewers.buffer_previewer_maker(filepath, bufnr, opts)
+		end
+	end) ]]
+end
+
 telescope.setup({
 	defaults = {
+		buffer_previewer_maker = new_maker,
 
 		prompt_prefix = " ",
 		selection_caret = " ",
@@ -86,8 +152,21 @@ telescope.setup({
 			},
 		},
 	},
+	pickers = {
+		live_grep = {
+			mappings = {
+				i = {
+					["<C-f>"] = ts_select_dir_for_grep,
+				},
+				n = {
+					["<C-f>"] = ts_select_dir_for_grep,
+				},
+			},
+		},
+	},
 })
 
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("file_browser")

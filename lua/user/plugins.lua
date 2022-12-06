@@ -60,7 +60,8 @@ return packer.startup(function(use)
 	--   use "folke/which-key.nvim"
 	use({ "lukas-reineke/indent-blankline.nvim", commit = "db7cbcb" })
 	use({ "lewis6991/impatient.nvim", commit = "b842e16" })
-	use({ "goolord/alpha-nvim", commit = "0bb6fc0" })
+	-- use({ "goolord/alpha-nvim", commit = "0bb6fc0" })
+  use({"mhinz/vim-startify"})
 	use({ "antoinemadec/FixCursorHold.nvim", commit = "70a9516" }) -- This is needed to fix lsp doc highlight
 	use({ "kyazdani42/nvim-web-devicons", commit = "9061e2d" })
 	use({ "kyazdani42/nvim-tree.lua", commit = "3845039" })
@@ -106,6 +107,7 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
+	use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 	-- Treesitter
 	use({

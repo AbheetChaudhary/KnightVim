@@ -80,8 +80,20 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 -- Telescope
 keymap(
 	"n",
-	"<leader>sf",
+	"<leader>f",
 	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false, winblend = 10 }))<cr>",
+	opts
+)
+keymap(
+	"n",
+	"<leader>sf",
+	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ winblend = 10 }))<cr>",
+	opts
+)
+keymap(
+	"n",
+	"<leader>se",
+	"<cmd>Telescope find_files theme=dropdown previewer=false cwd=~/.config/nvim/<cr>",
 	opts
 )
 keymap("n", "<leader>st", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
@@ -89,7 +101,9 @@ keymap("n", "<leader>sp", "<cmd>Telescope projects theme=dropdown winblend=10<cr
 keymap("n", "<leader>sk", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<leader>sb", "<cmd>Telescope buffers theme=dropdown winblend=10<cr>", opts)
 keymap("n", "<leader>sc", "<cmd>Telescope commands<cr>", opts)
+keymap("n", "<leader>sh", "<cmd>Telescope help_tags<cr>", opts)
 keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", opts)
+keymap("n", "<leader>r", "<cmd>Telescope oldfiles previewer=false theme=dropdown winblend=10<cr>", opts)
 keymap(
 	"n",
 	"<leader>/",

@@ -69,7 +69,7 @@ lualine.setup({
 		theme = "auto",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "Outline" },
+		disabled_filetypes = { "alpha", "dashboard", "Outline", "startify", "TelescopePrompt" },
 		always_divide_middle = true,
 		refresh = {
 			statusline = 1000,
