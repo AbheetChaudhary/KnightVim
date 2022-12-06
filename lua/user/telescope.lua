@@ -10,7 +10,7 @@ telescope.setup({
 
 		prompt_prefix = " ",
 		selection_caret = " ",
-		path_display = { "smart" },
+		path_display = { "truncate" },
 		extensions = {
 			fzf = {
 				fuzzy = true, -- false will only do exact matching

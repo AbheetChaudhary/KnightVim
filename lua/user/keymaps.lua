@@ -62,9 +62,10 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Misc
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise()<CR>", opts)
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle.linewise()<CR>", opts) -- better to use the universal line comment shortcut. The keybinding is <C-/> but why do i need to
+-- write it as <C-_>
 
+keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Better terminal navigation
 -- Terminal --
@@ -77,13 +78,24 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Telescope
-keymap("n", "<leader>sf", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-keymap("n", "<leader>st", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>sp", "<cmd>Telescope projects<cr>", opts)
+keymap(
+	"n",
+	"<leader>sf",
+	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false, winblend = 10 }))<cr>",
+	opts
+)
+keymap("n", "<leader>st", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
+keymap("n", "<leader>sp", "<cmd>Telescope projects theme=dropdown winblend=10<cr>", opts)
 keymap("n", "<leader>sk", "<cmd>Telescope keymaps<cr>", opts)
-keymap("n", "<leader>sb", "<cmd>Telescope buffers theme=dropdown<cr>", opts)
+keymap("n", "<leader>sb", "<cmd>Telescope buffers theme=dropdown winblend=10<cr>", opts)
 keymap("n", "<leader>sc", "<cmd>Telescope commands<cr>", opts)
 keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", opts)
+keymap(
+	"n",
+	"<leader>/",
+	"<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({previewer = false, winblend = 10}), {sorting_strategy='ascending'})<cr>",
+	opts
+)
 
 -- LSP
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format {async = true } <cr>", opts)
