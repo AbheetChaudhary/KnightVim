@@ -12,7 +12,7 @@ require("onedark").setup({
 	code_style = {
 		comments = "italic",
 		keywords = "italic",
-		functions = "bold",
+		functions = "bold,italic",
 		strings = "none",
 		variables = "none",
 	},
