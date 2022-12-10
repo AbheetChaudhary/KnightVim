@@ -22,11 +22,24 @@ require("onedark").setup({
 	},
 	colors = {
 		grey = "#6b728c", -- default grey color was very dark for comments to be readable
+		-- bright_orange = "#ff8800", -- define a new color
+		-- green = "#00ffaa", -- redefine an existing color
 	},
 	highlights = {
 		rainbowcol1 = { fg = "#f24a24" }, -- this line fixes a first-level-parenthesis issue which makes it impossible to see when the cursor block is on it
 		Visual = { bg = "#073975" }, -- earlier highlight color in visual mode was same as Illuminate's highlight color
 		MatchParen = { fg = "none", bg = "#37383d" },
+		FloatBorder = { bg = "bg" },
+		NormalFloat = { bg = "bg" },
+		DiagnosticError = { bg = "bg" },
+		DiagnosticHint = { bg = "bg" },
+		DiagnosticInfo = { bg = "bg" },
+		DiagnosticWarn = { bg = "bg" },
+	},
+	diagnostics = {
+		darker = true, -- darker colors for diagnostic
+		undercurl = true, -- use undercurl instead of underline for diagnostics
+		background = true, -- use background color for virtual text
 	},
 })
 

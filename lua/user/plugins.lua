@@ -75,12 +75,10 @@ return packer.startup(function(use)
 		-- require('onedark').setup {
 		-- style = 'deep'
 		-- }
-		commit = "cad3d98",
+		-- commit = "cad3d98",
 	})
-	-- use({ "dracula/vim", as = "dracula" })
-	-- use({ "EdenEast/nightfox.nvim", commit = "db26a92" })
-	-- use({ "rebelot/kanagawa.nvim", commit = "70d3139" })
-	-- use({ "morhetz/gruvbox", commit = "bf2885a" })
+  use ({'tanvirtin/monokai.nvim'})
+
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "9bb8ee6" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer", commit = "3022dbc" }) -- buffer completions
@@ -112,7 +110,11 @@ return packer.startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		-- run = ":TSUpdate",
+<<<<<<< HEAD
 		commit = "5d11dfc2",
+=======
+		-- commit = "5d11dfc2",
+>>>>>>> colorscheme
 	})
 	use({ "p00f/nvim-ts-rainbow", commit = "064fd6c" })
 
