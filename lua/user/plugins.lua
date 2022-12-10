@@ -110,11 +110,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		-- run = ":TSUpdate",
-<<<<<<< HEAD
 		commit = "5d11dfc2",
-=======
-		-- commit = "5d11dfc2",
->>>>>>> colorscheme
 	})
 	use({ "p00f/nvim-ts-rainbow", commit = "064fd6c" })
 
