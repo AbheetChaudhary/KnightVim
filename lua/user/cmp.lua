@@ -46,6 +46,10 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+local ELLIPSIS_CHAR = "…"
+local MAX_LABEL_WIDTH = 24
+local MIN_LABEL_WIDTH = 24
+
 cmp.setup({
 	enabled = function()
 		-- disable completion in comments
@@ -112,6 +116,16 @@ cmp.setup({
 				buffer = "[Buffer]",
 				path = "[Path]",
 			})[entry.source.name]
+
+      -- fix width of completion and documentation menu
+			local label = vim_item.abbr
+			local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+			if truncated_label ~= label then
+				vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
+			elseif string.len(label) < MIN_LABEL_WIDTH then
+				local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
+				vim_item.abbr = label .. padding
+			end
 			return vim_item
 		end,
 	},
@@ -127,12 +141,17 @@ cmp.setup({
 		select = false,
 	},
 	window = {
-		documentation = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-		},
+		documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
 	},
+	-- window = {
+	-- 	documentation = {
+	-- 		-- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	-- 	},
+	-- },
 	experimental = {
 		ghost_text = false, -- find a way to disable this while writing comments
 		native_menu = false,
 	},
 })
+
