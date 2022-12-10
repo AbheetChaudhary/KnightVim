@@ -29,6 +29,12 @@ require("onedark").setup({
 		rainbowcol1 = { fg = "#f24a24" }, -- this line fixes a first-level-parenthesis issue which makes it impossible to see when the cursor block is on it
 		Visual = { bg = "#073975" }, -- earlier highlight color in visual mode was same as Illuminate's highlight color
 		MatchParen = { fg = "none", bg = "#37383d" },
+		FloatBorder = { bg = "bg" },
+		NormalFloat = { bg = "bg" },
+		DiagnosticError = { bg = "bg" },
+		DiagnosticHint = { bg = "bg" },
+		DiagnosticInfo = { bg = "bg" },
+		DiagnosticWarn = { bg = "bg" },
 	},
 	diagnostics = {
 		darker = true, -- darker colors for diagnostic
