@@ -52,11 +52,13 @@ local MIN_LABEL_WIDTH = 24
 
 cmp.setup({
 	enabled = function()
-		-- disable completion in comments
+		-- disable completion in comments and prompts
 		local context = require("cmp.config.context")
 		-- keep command mode completion enabled when cursor is in a comment
 		if vim.api.nvim_get_mode().mode == "c" then
 			return true
+		elseif vim.bo.buftype == "prompt" then
+			return false
 		else
 			return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
 		end
@@ -117,7 +119,7 @@ cmp.setup({
 				path = "[Path]",
 			})[entry.source.name]
 
-      -- fix width of completion and documentation menu
+			-- fix width of completion and documentation menu
 			local label = vim_item.abbr
 			local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
 			if truncated_label ~= label then
@@ -142,7 +144,8 @@ cmp.setup({
 	},
 	window = {
 		documentation = cmp.config.window.bordered(),
-		-- completion = cmp.config.window.bordered(),
+		-- completion = cmp.config.window.bordered({ "╭", "─", "╮", "│", "╯", "─", "╰", "│" }),
+    -- border can have any single width character
 	},
 	-- window = {
 	-- 	documentation = {
@@ -154,4 +157,3 @@ cmp.setup({
 		native_menu = false,
 	},
 })
-
