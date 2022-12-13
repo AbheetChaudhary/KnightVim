@@ -22,6 +22,7 @@ require("onedark").setup({
 	},
 	colors = {
 		grey = "#6b728c", -- default grey color was very dark for comments to be readable
+    yellow = "#ebbb38"
 		-- bright_orange = "#ff8800", -- define a new color
 		-- green = "#00ffaa", -- redefine an existing color
 	},

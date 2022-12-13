@@ -147,11 +147,7 @@ cmp.setup({
 		-- completion = cmp.config.window.bordered({ "╭", "─", "╮", "│", "╯", "─", "╰", "│" }),
     -- border can have any single width character
 	},
-	-- window = {
-	-- 	documentation = {
-	-- 		-- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-	-- 	},
-	-- },
+  preselect = cmp.PreselectMode.None, -- select no completion by default
 	experimental = {
 		ghost_text = false, -- find a way to disable this while writing comments
 		native_menu = false,
