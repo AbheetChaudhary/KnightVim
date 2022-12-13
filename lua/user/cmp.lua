@@ -131,6 +131,7 @@ cmp.setup({
 			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 		},
 	},
+  preselect = cmp.PreselectMode.None, -- select no completion by default
 	experimental = {
 		ghost_text = false, -- find a way to disable this while writing comments
 		native_menu = false,

@@ -69,15 +69,18 @@ return packer.startup(function(use)
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 	use({ "folke/tokyonight.nvim", commit = "29e2c68" })
-	use({ "lunarvim/darkplus.nvim", commit = "f20cba5" })
+	use({
+		"lunarvim/darkplus.nvim",
+		commit = "d308e95"
+	})
 	use({
 		"navarasu/onedark.nvim",
 		-- require('onedark').setup {
 		-- style = 'deep'
 		-- }
-		-- commit = "cad3d98",
+		commit = "89dde49",
 	})
-  use ({'tanvirtin/monokai.nvim'})
+	use({ "tanvirtin/monokai.nvim" })
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "9bb8ee6" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer", commit = "3022dbc" }) -- buffer completions
@@ -109,7 +112,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		-- run = ":TSUpdate",
-		-- commit = "5d11dfc2",
+		commit = "eadfcad",
 	})
 	use({ "p00f/nvim-ts-rainbow", commit = "064fd6c" })
 
