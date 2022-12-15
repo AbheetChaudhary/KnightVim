@@ -60,7 +60,7 @@ keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 
 -- hold on to what was yanked while pasting on top of some other highlighted block in visual mode
-keymap("v", "p", '"_dP', opts)
+keymap("v", "<leader>p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
