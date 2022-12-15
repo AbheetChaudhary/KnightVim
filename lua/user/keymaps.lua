@@ -88,7 +88,7 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 -- Telescope
 keymap(
 	"n",
-	"<leader>f",
+	"<leader>ff",
 	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false, winblend = 10 }))<cr>",
 	opts
 )
@@ -111,7 +111,7 @@ keymap("n", "<leader>sb", "<cmd>Telescope buffers theme=dropdown winblend=10<cr>
 keymap("n", "<leader>sc", "<cmd>Telescope commands<cr>", opts)
 keymap("n", "<leader>sh", "<cmd>Telescope help_tags<cr>", opts)
 keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", opts)
-keymap("n", "<leader>r", "<cmd>Telescope oldfiles previewer=false theme=dropdown winblend=10<cr>", opts)
+keymap("n", "<leader>fr", "<cmd>Telescope oldfiles previewer=false theme=dropdown winblend=10<cr>", opts)
 keymap(
 	"n",
 	"<leader>/",

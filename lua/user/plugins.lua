@@ -71,7 +71,7 @@ return packer.startup(function(use)
 	use({ "folke/tokyonight.nvim", commit = "29e2c68" })
 	use({
 		"lunarvim/darkplus.nvim",
-		commit = "d308e95"
+		commit = "d308e95",
 	})
 	use({
 		"navarasu/onedark.nvim",
@@ -95,8 +95,10 @@ return packer.startup(function(use)
 	use({ "rafamadriz/friendly-snippets", commit = "c93311f" }) -- a bunch of snippets to use
 
 	-- LSP
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "neovim/nvim-lspconfig", commit = "67f0d00" }) -- enable LSP
-	use({ "williamboman/nvim-lsp-installer", commit = "23820a8" }) -- simple to use language server installer
+	-- use({ "williamboman/nvim-lsp-installer", commit = "23820a8" }) -- simple to use language server installer
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "f1add23" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate", commit = "0603e75" }) -- highlight matching texts when cursor is on it
 
