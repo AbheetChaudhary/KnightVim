@@ -19,6 +19,14 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+-- Toggle word wrap
+keymap("n", "<A-z>", "<cmd>set wrap! linebreak<CR>", opts)
+
+-- Copy to system clipboard
+keymap("v", "Y", '"+y', opts)
+keymap("n", "Y", '"+y', opts)
+keymap("n", "yY", '"+yy', opts)
+
 -- Better window navigation in split window mode
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
