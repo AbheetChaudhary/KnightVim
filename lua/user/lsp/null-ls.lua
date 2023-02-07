@@ -22,6 +22,10 @@ null_ls.setup({
 		formatting.stylua,
 		diagnostics.flake8.with({ extra_args = { "--extend-ignore=F821,E302,E501" }, filetype = { "python" } }),
 		formatting.clang_format,
-		formatting.rustfmt.with({ extra_args = { "--edition=2021" }, filetype = { "rust" }, arg = { "--wmit=stdout" } }),
+		formatting.rustfmt.with({
+			extra_args = { "--edition=2021", "--config", "max_width=80" },
+			filetype = { "rust" },
+			arg = { "--wmit=stdout" },
+		}),
 	},
 })

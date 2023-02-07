@@ -130,8 +130,6 @@ return packer.startup(function(use)
 	-- nvim notify
 	use({ "rcarriga/nvim-notify" })
 
-	-- logging
-	use({ "Tastyep/structlog.nvim" })
 
 	use({
 		"phaazon/hop.nvim",
@@ -142,6 +140,7 @@ return packer.startup(function(use)
 		-- 	require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		-- end,
 	})
+  use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
