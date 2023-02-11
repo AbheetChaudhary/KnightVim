@@ -90,6 +90,12 @@ local on_attach = function(client, bufnr)
 	if client.name == "sumneko_lua" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
+	if client.name == "jdtls" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+	if client.name == "clangd" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
 end
 
 local lsp_flags = {
@@ -101,6 +107,8 @@ require("lspconfig")["clangd"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = require("user.lsp.settings.clangd").capabilities,
+
+	filetypes = { "c", "cpp" },
 })
 
 require("lspconfig")["jsonls"].setup({
@@ -116,6 +124,22 @@ require("lspconfig")["jdtls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
+
+	single_file_support = true,
+	-- settings = {
+	-- 	java = {
+	-- 		completion = {
+	-- 			overwrite = true,
+	-- 		},
+	-- 	},
+	-- },
+	cmd = { "jdtls" },
+
+	-- cmd = require("user.lsp.settings.jdtls").cmd,
+	-- filetypes = require("user.lsp.settings.jdtls").filetypes,
+	-- init_options = require("user.lsp.settings.jdtls").init_options,
+	-- root_dir = require("user.lsp.settings.jdtls").root_dir,
+	-- single_file_support = require("user.lsp.settings.jdtls").single_file_support,
 })
 
 require("lspconfig")["pyright"].setup({

@@ -100,7 +100,7 @@ keymap(
 )
 keymap(
 	"n",
-	"<leader>se",
+	"<leader>fe",
 	"<cmd>Telescope find_files theme=dropdown previewer=false cwd=~/.config/nvim/<cr>",
 	opts
 )

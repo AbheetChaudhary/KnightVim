@@ -51,7 +51,7 @@ return packer.startup(function(use)
 	use({ "nvim-lua/popup.nvim", commit = "b7404d3" }) -- An implementation of the Popup API from vim in Neovim
 	use({ "windwp/nvim-autopairs", commit = "6b6e35f" }) -- Autopairs, integrates with both cmp and treesitter
 	use({ "numToStr/Comment.nvim", commit = "ad7ffa8" }) -- Easily comment stuff
-	use({ "akinsho/bufferline.nvim", commit = "028a879" })
+	use({ "akinsho/bufferline.nvim", commit = "c7492a7" })
 	use({ "ThePrimeagen/harpoon", commit = "21d0d1b" })
 	use({ "moll/vim-bbye", commit = "25ef93a" })
 	use({ "ahmedkhalf/project.nvim", commit = "685bc8e" })
@@ -128,7 +128,7 @@ return packer.startup(function(use)
 	-- use "Pocco81/dap-buddy.nvim"
 
 	-- nvim notify
-	use({ "rcarriga/nvim-notify" })
+	-- use({ "rcarriga/nvim-notify" })
 
 
 	use({
