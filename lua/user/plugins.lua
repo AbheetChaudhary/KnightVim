@@ -69,18 +69,11 @@ return packer.startup(function(use)
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 	use({ "folke/tokyonight.nvim", commit = "29e2c68" })
-	use({
-		"lunarvim/darkplus.nvim",
-		commit = "d308e95",
-	})
-	use({
-		"navarasu/onedark.nvim",
-		-- require('onedark').setup {
-		-- style = 'deep'
-		-- }
-		commit = "89dde49",
-	})
+	use({ "lunarvim/darkplus.nvim", commit = "d308e95" })
+	use({ "navarasu/onedark.nvim", commit = "89dde49" })
 	use({ "tanvirtin/monokai.nvim" })
+	use({ "ellisonleao/gruvbox.nvim" })
+	use({"Mofiqul/dracula.nvim"})
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "9bb8ee6" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer", commit = "3022dbc" }) -- buffer completions
@@ -129,8 +122,7 @@ return packer.startup(function(use)
 
 	-- nvim notify
 	-- use({ "rcarriga/nvim-notify" })
-
-
+  use({"vimwiki/vimwiki", commit = "fea8bee"})
 	use({
 		"phaazon/hop.nvim",
 		commit = "90db1b2",
@@ -140,7 +132,8 @@ return packer.startup(function(use)
 		-- 	require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		-- end,
 	})
-  use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
+  use({"tpope/vim-surround"})
+	use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

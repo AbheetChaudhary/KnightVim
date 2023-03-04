@@ -22,16 +22,22 @@ vim.g.maplocalleader = " "
 -- Toggle word wrap
 keymap("n", "<A-z>", "<cmd>set wrap! linebreak<CR>", opts)
 
+vim.keymap.set("n", "<leader>ls", ":buffers<CR>")
+vim.keymap.set("n", "<leader>,", ":source %<CR>", {silent = true})
+
+-- Although either Nvim-tree or project-nvim dont respect it
+vim.keymap.set("n", "<leader>cd", ":cd %:p:h<CR>", {silent = true})
+
 -- Copy to system clipboard
 keymap("v", "Y", '"+y', opts)
 keymap("n", "Y", '"+y', opts)
 keymap("n", "yY", '"+yy', opts)
 
 -- Better window navigation in split window mode
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- keymap("n", "<C-h>", "<C-w>h", opts)
+-- keymap("n", "<C-j>", "<C-w>j", opts)
+-- keymap("n", "<C-k>", "<C-w>k", opts)
+-- keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows keys in split window mode
 keymap("n", "<C-Up>", ":resize +1<CR>", opts)
@@ -130,8 +136,8 @@ keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "<leader>ld", "<cmd>Telescope diagnostics<cr>", opts)
 
 -- Harpoon
-keymap("n", "<leader>pm", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
-keymap("n", "<leader>pq", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
-
-keymap("n", "<leader>pn", "<cmd>lua require('harpoon.ui').nav_next()<CR>", opts)
-keymap("n", "<leader>pp", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", opts)
+-- keymap("n", "<leader>pm", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
+-- keymap("n", "<leader>pq", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
+--
+-- keymap("n", "<leader>pn", "<cmd>lua require('harpoon.ui').nav_next()<CR>", opts)
+-- keymap("n", "<leader>pp", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", opts)

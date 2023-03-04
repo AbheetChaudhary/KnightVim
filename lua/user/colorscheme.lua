@@ -45,4 +45,6 @@ require("onedark").setup({
 	},
 })
 
+-- require("gruvbox").load()
+-- require("dracula").load()
 require("onedark").load()

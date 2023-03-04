@@ -103,6 +103,17 @@ local lsp_flags = {
 	debounce_text_changes = 150,
 }
 
+-- Add LSP settings in alphabetical order
+
+require("lspconfig")["awk_ls"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = require("user.lsp.settings.clangd").capabilities,
+
+	cmd = { "awk-language-server" },
+	filetypes = { "awk" },
+})
+
 require("lspconfig")["clangd"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
