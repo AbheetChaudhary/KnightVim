@@ -3,6 +3,7 @@
     "Lua.diagnostics.globals": [
         "vim",
         "opts",
-        "cmd"
+        "cmd",
+        "eval"
     ]
 }

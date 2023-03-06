@@ -46,9 +46,9 @@ keymap("n", "<C-Left>", ":vertical resize -1<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +1<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
+-- keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<c-PageDown>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<c-PageUp>", ":bprevious<CR>", opts)
 keymap("n", "<a-w>", "<cmd>Bdelete!<CR>", opts)
 
@@ -136,8 +136,12 @@ keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "<leader>ld", "<cmd>Telescope diagnostics<cr>", opts)
 
 -- Harpoon
--- keymap("n", "<leader>pm", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
--- keymap("n", "<leader>pq", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
---
--- keymap("n", "<leader>pn", "<cmd>lua require('harpoon.ui').nav_next()<CR>", opts)
--- keymap("n", "<leader>pp", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", opts)
+keymap("n", "<leader>m","<cmd>lua require'harpoon.ui'.toggle_quick_menu()<CR>", opts)
+keymap("n", "<leader>pa", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
+keymap("n", "<C-h>",  "<cmd>lua require'harpoon.ui'.nav_file(1)<CR>", opts)
+keymap("n", "<C-t>",  "<cmd>lua require'harpoon.ui'.nav_file(2)<CR>", opts)
+keymap("n", "<C-n>",  "<cmd>lua require'harpoon.ui'.nav_file(3)<CR>", opts)
+keymap("n", "<C-s>",  "<cmd>lua require'harpoon.ui'.nav_file(4)<CR>", opts)
+
+-- JABS
+keymap("n", "<leader>bj",  "<cmd>JABSOpen<CR>", opts)

@@ -84,6 +84,10 @@ local on_attach = function(client, bufnr)
 	vim.lsp.handlers["textDocument/publishDiagnostics"] =
 		vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { update_in_insert = false })
 
+	if client.server_capabilities.documentSymbolProvider then
+		require'nvim-navic'.attach(client, bufnr)
+	end
+
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end

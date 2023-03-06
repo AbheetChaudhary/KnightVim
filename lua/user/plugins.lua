@@ -52,7 +52,6 @@ return packer.startup(function(use)
 	use({ "windwp/nvim-autopairs", commit = "6b6e35f" }) -- Autopairs, integrates with both cmp and treesitter
 	use({ "numToStr/Comment.nvim", commit = "ad7ffa8" }) -- Easily comment stuff
 	use({ "akinsho/bufferline.nvim", commit = "c7492a7" })
-	use({ "ThePrimeagen/harpoon", commit = "21d0d1b" })
 	use({ "moll/vim-bbye", commit = "25ef93a" })
 	use({ "ahmedkhalf/project.nvim", commit = "685bc8e" })
 	use({ "nvim-lualine/lualine.nvim", commit = "3325d5d" })
@@ -73,7 +72,7 @@ return packer.startup(function(use)
 	use({ "navarasu/onedark.nvim", commit = "89dde49" })
 	use({ "tanvirtin/monokai.nvim" })
 	use({ "ellisonleao/gruvbox.nvim" })
-	use({"Mofiqul/dracula.nvim"})
+	use({ "Mofiqul/dracula.nvim" })
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "9bb8ee6" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer", commit = "3022dbc" }) -- buffer completions
@@ -88,7 +87,7 @@ return packer.startup(function(use)
 	use({ "rafamadriz/friendly-snippets", commit = "c93311f" }) -- a bunch of snippets to use
 
 	-- LSP
-	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason.nvim", commit = "9d2e3c9" })
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "neovim/nvim-lspconfig", commit = "67f0d00" }) -- enable LSP
 	-- use({ "williamboman/nvim-lsp-installer", commit = "23820a8" }) -- simple to use language server installer
@@ -122,7 +121,7 @@ return packer.startup(function(use)
 
 	-- nvim notify
 	-- use({ "rcarriga/nvim-notify" })
-  use({"vimwiki/vimwiki", commit = "fea8bee"})
+	use({ "vimwiki/vimwiki", commit = "fea8bee" })
 	use({
 		"phaazon/hop.nvim",
 		commit = "90db1b2",
@@ -132,7 +131,27 @@ return packer.startup(function(use)
 		-- 	require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		-- end,
 	})
-  use({"tpope/vim-surround"})
+	use({ "tpope/vim-surround" })
+
+	-- quick buffer switching
+	use({ "ThePrimeagen/harpoon", commit = "21d0d1b" })
+	use({ "matbme/JABS.nvim" })
+	use({ "ghillb/cybu.nvim" })
+
+	use({ "SmiteshP/nvim-navic" })
+	use({
+		"utilyre/barbecue.nvim",
+		tag = "*",
+		requires = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		after = "nvim-web-devicons", -- keep this if you're using NvChad
+		config = function()
+			require("user.barbecue")
+		end,
+	})
+
 	use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
