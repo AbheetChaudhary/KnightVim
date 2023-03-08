@@ -179,6 +179,13 @@ require("lspconfig")["sumneko_lua"].setup({
 	settings = require("user.lsp.settings.sumneko_lua").settings,
 })
 
+require("lspconfig")["taplo"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+  filetypes = { "toml" },
+})
+
 require("lspconfig")["tailwindcss"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
