@@ -29,14 +29,14 @@ vim.cmd([[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
-if has_key(environ(), 'TMUX')
-  augroup tmux_something
-    autocmd VimResume  * call system('tmux set status off')
-    autocmd VimEnter   * call system('tmux set status off')
-    autocmd VimLeave   * call system('tmux set status on')
-    autocmd VimSuspend * call system('tmux set status on')
-  augroup END
-endif
+" if has_key(environ(), 'TMUX')
+"   augroup tmux_something
+"     autocmd VimResume  * call system('tmux set status off')
+"     autocmd VimEnter   * call system('tmux set status off')
+"     autocmd VimLeave   * call system('tmux set status on')
+"     autocmd VimSuspend * call system('tmux set status on')
+"   augroup END
+" endif
 
 "   augroup collumnLimit
 "   autocmd!
