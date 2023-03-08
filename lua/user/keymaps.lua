@@ -33,6 +33,8 @@ keymap("v", "Y", '"+y', opts)
 keymap("n", "Y", '"+y', opts)
 keymap("n", "yY", '"+yy', opts)
 
+-- Motion f/F and t/T remapped using Hop
+
 -- Better window navigation in split window mode
 -- keymap("n", "<C-h>", "<C-w>h", opts)
 -- keymap("n", "<C-j>", "<C-w>j", opts)
@@ -75,9 +77,10 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Misc
+-- Comment
 keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle.linewise()<CR>", opts) -- better to use the universal line comment shortcut. The keybinding is <C-/> but why do i need to
 -- write it as <C-_>
+-- Other keymaps are in user.comments
 
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
@@ -87,6 +90,8 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+-- some toggleterm related keymaps in user.toggleterm. TODO: fix them
 
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
@@ -124,16 +129,26 @@ keymap(
 	"<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({previewer = false, winblend = 10}), {sorting_strategy='ascending'})<cr>",
 	opts
 )
+-- and many in user.telescope for when telescope buffer is open.
+
+
+-- Completion 
+-- cmp completion related plugins are in user.cmp
 
 -- LSP
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format {async = true } <cr>", opts)
 keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-keymap("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
+keymap("n", "<leader>lI", "<cmd>Mason<cr>", opts)
 keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+keymap("n", "<leader>la", "<cmd>CodeActionMenu<cr>", opts)
+-- keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "<leader>ld", "<cmd>Telescope diagnostics<cr>", opts)
+-- few more lsp related plugins are in user.lsp.settings.nvim-lspconfig. They work only in lsp's presence
+
+-- Debuggers
+-- some keybindings in user.dap
 
 -- Harpoon
 keymap("n", "<leader>m","<cmd>lua require'harpoon.ui'.toggle_quick_menu()<CR>", opts)
@@ -144,4 +159,14 @@ keymap("n", "<C-n>",  "<cmd>lua require'harpoon.ui'.nav_file(3)<CR>", opts)
 keymap("n", "<C-s>",  "<cmd>lua require'harpoon.ui'.nav_file(4)<CR>", opts)
 
 -- JABS
-keymap("n", "<leader>bj",  "<cmd>JABSOpen<CR>", opts)
+keymap("n", "<leader>bj",  "<cmd>JABSOpen<CR>", opts)  -- a few more in user.jabs
+
+--cybu
+vim.keymap.set("n", "[b", "<Plug>(CybuLastusedPrev)")
+vim.keymap.set("n", "]b", "<Plug>(CybuLastusedNext)")
+vim.keymap.set("n", "<S-h>", "<plug>(CybuPrev)")
+vim.keymap.set("n", "<S-l>", "<plug>(CybuNext)")
+
+-- Rust Tools --
+-- vim.keymap.set("n", "<C-space>", "<cmd>lua require'rust-tools'.hover_actions.hover_actions{}<CR>")
+-- vim.keymap.set("n", "<leader>a", "<cmd>lua require'rust-tools'.code_action_group.code_action_group{}<CR>")

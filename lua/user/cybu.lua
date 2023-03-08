@@ -54,9 +54,3 @@ require("cybu").setup({
 	fallback = function() end, -- arbitrary fallback function
 	-- used in excluded filetypes
 })
-
-vim.keymap.set("n", "[b", "<Plug>(CybuLastusedPrev)")
-vim.keymap.set("n", "]b", "<Plug>(CybuLastusedNext)")
-vim.keymap.set("n", "<S-h>", "<plug>(CybuPrev)")
-vim.keymap.set("n", "<S-l>", "<plug>(CybuNext)")
-

@@ -38,16 +38,14 @@ local options = {
   sidescrolloff = 8,
   guifont = "JetBrainsMono Nerd Font:h10",               -- the font used in graphical neovim applications
   title = true,
-  -- colorcolumn = "80",
-  -- colorcolumn = "120",
   lazyredraw = true,
 
 }
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
--- vim.opt.fillchars.eob = " "
--- vim.opt.fillchars = vim.opt.fillchars + "vertleft: "
--- vim.opt.fillchars = vim.opt.fillchars + "vertright: "
+-- vim.g.code_action_menu_window_border = "single"
+-- vim.g.code_action_menu_show_details = false
+-- vim.g.code_action_menu_show_diff = false
+vim.g.code_action_menu_show_action_kind = true
+
 vim.opt.fillchars = vim.opt.fillchars + 'eob: '
 vim.opt.fillchars:append {
   stl = ' ',
@@ -63,8 +61,6 @@ vim.cmd "set whichwrap+=<,>,[,],"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[filetype plugin indent on]]
 vim.cmd [[filetype indent on]]
--- vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
--- vim.cmd "set wrap linebreak"
 
 vim.filetype.add {
   extension = {

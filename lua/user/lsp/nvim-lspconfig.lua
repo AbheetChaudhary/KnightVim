@@ -84,9 +84,9 @@ local on_attach = function(client, bufnr)
 	vim.lsp.handlers["textDocument/publishDiagnostics"] =
 		vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { update_in_insert = false })
 
-	if client.server_capabilities.documentSymbolProvider then
-		require'nvim-navic'.attach(client, bufnr)
-	end
+	-- if client.server_capabilities.documentSymbolProvider then
+	-- 	require("nvim-navic").attach(client, bufnr)
+	-- end
 
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
@@ -165,10 +165,37 @@ require("lspconfig")["pyright"].setup({
 	settings = require("user.lsp.settings.pyright").settings,
 })
 
-require("lspconfig")["rust_analyzer"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
+-- require("lspconfig")["rust_analyzer"].setup({
+-- 	on_attach = on_attach,
+-- 	flags = lsp_flags,
+-- 	capabilities = capabilities,
+-- })
+
+require("rust-tools").setup({
+	tools = {
+		runnables = {
+			use_telescope = true,
+		},
+		inlay_hints = {
+			auto = false,
+			show_parameter_hints = false,
+			parameter_hints_prefix = "",
+			other_hints_prefix = "",
+		},
+	},
+	server = {
+		on_attach = on_attach,
+		-- flags = lsp_flags,
+		-- capabilities = capabilities,
+		-- Hover actions
+		settings = {
+			["rust_analyzer"] = {
+				checkOnSave = {
+					command = "clippy",
+				},
+			},
+		},
+	},
 })
 
 require("lspconfig")["sumneko_lua"].setup({
@@ -183,7 +210,7 @@ require("lspconfig")["taplo"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
-  filetypes = { "toml" },
+	filetypes = { "toml" },
 })
 
 require("lspconfig")["tailwindcss"].setup({
