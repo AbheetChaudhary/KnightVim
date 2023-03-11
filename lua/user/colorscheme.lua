@@ -45,6 +45,10 @@ require("onedark").setup({
 	},
 })
 
+require("onedark").load()
 -- require("gruvbox").load()
 -- require("dracula").load()
-require("onedark").load()
+
+-- Ofirkai
+-- require("ofirkai").setup()
+-- theme = require('ofirkai.statuslines.lualine').theme,

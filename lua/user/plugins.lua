@@ -68,6 +68,9 @@ return packer.startup(function(use)
 	use({ "tanvirtin/monokai.nvim" })
 	use({ "ellisonleao/gruvbox.nvim" })
 	use({ "Mofiqul/dracula.nvim" })
+	use({ "NLKNguyen/papercolor-theme" })
+	use({ "ofirgall/ofirkai.nvim" })
+
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "9bb8ee6" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer", commit = "3022dbc" }) -- buffer completions
@@ -94,7 +97,7 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
-	use({ "nvim-telescope/telescope-file-browser.nvim", commit = "61b3769" })  -- It is useful when changing directories while running live-grep
+	use({ "nvim-telescope/telescope-file-browser.nvim", commit = "61b3769" }) -- It is useful when changing directories while running live-grep
 
 	-- Treesitter
 	use({
@@ -120,7 +123,7 @@ return packer.startup(function(use)
 	})
 	use({ "tpope/vim-surround" })
 
-  -- Rust
+	-- Rust
 	use({ "simrat39/rust-tools.nvim" })
 	-- use({
 	-- 	"j-hui/fidget.nvim",
