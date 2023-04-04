@@ -35,12 +35,6 @@ keymap("n", "yY", '"+yy', opts)
 
 -- Motion f/F and t/T remapped using Hop
 
--- Better window navigation in split window mode
--- keymap("n", "<C-h>", "<C-w>h", opts)
--- keymap("n", "<C-j>", "<C-w>j", opts)
--- keymap("n", "<C-k>", "<C-w>k", opts)
--- keymap("n", "<C-l>", "<C-w>l", opts)
-
 -- Resize with arrows keys in split window mode
 keymap("n", "<C-Up>", ":resize +1<CR>", opts)
 keymap("n", "<C-Down>", ":resize -1<CR>", opts)
@@ -48,9 +42,7 @@ keymap("n", "<C-Left>", ":vertical resize -1<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +1<CR>", opts)
 
 -- Navigate buffers
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<c-PageDown>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<c-PageUp>", ":bprevious<CR>", opts)
 keymap("n", "<a-w>", "<cmd>Bdelete!<CR>", opts)
 
@@ -84,14 +76,7 @@ keymap("n", "<C-_>", "<cmd>lua require('Comment.api').toggle.linewise()<CR>", op
 
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
--- Better terminal navigation
--- Terminal --
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-
--- some toggleterm related keymaps in user.toggleterm. TODO: fix them
+-- some toggleterm related keymaps in user.toggleterm.
 
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
@@ -142,8 +127,7 @@ keymap("n", "<leader>lI", "<cmd>Mason<cr>", opts)
 keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-keymap("n", "<leader>la", "<cmd>CodeActionMenu<cr>", opts)
--- keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "<leader>ld", "<cmd>Telescope diagnostics<cr>", opts)
 -- few more lsp related plugins are in user.lsp.settings.nvim-lspconfig. They work only in lsp's presence
 
@@ -166,7 +150,3 @@ vim.keymap.set("n", "[b", "<Plug>(CybuLastusedPrev)")
 vim.keymap.set("n", "]b", "<Plug>(CybuLastusedNext)")
 vim.keymap.set("n", "<S-h>", "<plug>(CybuPrev)")
 vim.keymap.set("n", "<S-l>", "<plug>(CybuNext)")
-
--- Rust Tools --
--- vim.keymap.set("n", "<C-space>", "<cmd>lua require'rust-tools'.hover_actions.hover_actions{}<CR>")
--- vim.keymap.set("n", "<leader>a", "<cmd>lua require'rust-tools'.code_action_group.code_action_group{}<CR>")

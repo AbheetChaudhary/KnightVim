@@ -162,6 +162,7 @@ return packer.startup(function(use)
 	-- 		require("user.barbecue")
 	-- 	end,
 	-- })
+  use({ "github/copilot.vim" })
 
 	use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
 	-- Automatically set up your configuration after cloning packer.nvim
