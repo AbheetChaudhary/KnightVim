@@ -16,34 +16,33 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
-
---   פּ ﯟ   some other good icons
 local kind_icons = {
-	Text = "",
-	Method = "m",
-	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "",
+	Text = "󰉿",
+	Method = "󰆧",
+	Function = "󰊕",
+	Constructor = "",
+  Field = " ",
+	Variable = "󰀫",
+	Class = "󰠱",
 	Interface = "",
 	Module = "",
-	Property = "",
-	Unit = "",
-	Value = "",
+	Property = "󰜢",
+	Unit = "󰑭",
+	Value = "󰎠",
 	Enum = "",
-	Keyword = "",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
+	Keyword = "󰌋",
+  Snippet = "",
+	Color = "󰏘",
+	File = "󰈙",
+  Reference = "",
+	Folder = "󰉋",
 	EnumMember = "",
-	Constant = "",
-	Struct = "",
+	Constant = "󰏿",
+  Struct = "",
 	Event = "",
-	Operator = "",
-	TypeParameter = "",
+	Operator = "󰆕",
+  TypeParameter = " ",
+	Misc = " ",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -146,9 +145,9 @@ cmp.setup({
 	window = {
 		documentation = cmp.config.window.bordered(),
 		-- completion = cmp.config.window.bordered({ "╭", "─", "╮", "│", "╯", "─", "╰", "│" }),
-    -- border can have any single width character
+		-- border can have any single width character
 	},
-  preselect = cmp.PreselectMode.None, -- select no completion by default
+	preselect = cmp.PreselectMode.None, -- select no completion by default
 	experimental = {
 		ghost_text = false, -- find a way to disable this while writing comments
 		native_menu = false,
