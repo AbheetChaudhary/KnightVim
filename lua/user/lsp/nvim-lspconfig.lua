@@ -126,6 +126,10 @@ require("lspconfig")["clangd"].setup({
 	filetypes = { "c", "cpp" },
 })
 
+require("lspconfig")["hls"].setup({
+	filetypes = { "haskell", "lhaskell", "cabal" },
+})
+
 require("lspconfig")["jsonls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,

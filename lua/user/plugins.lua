@@ -56,7 +56,7 @@ return packer.startup(function(use)
 	use({ "lewis6991/impatient.nvim", commit = "b842e16" })
 	use({ "goolord/alpha-nvim", commit = "0bb6fc0" })
 	use({ "antoinemadec/FixCursorHold.nvim", commit = "70a9516" }) -- This is needed to fix lsp doc highlight
-	use({ "kyazdani42/nvim-web-devicons", commit = "9061e2d" })
+	use({ "kyazdani42/nvim-web-devicons" })
 	use({ "kyazdani42/nvim-tree.lua", commit = "3845039" })
 	use({ "nvim-lua/plenary.nvim", commit = "4b7e520" }) -- Useful lua functions used by lots of plugins
 
@@ -92,11 +92,11 @@ return packer.startup(function(use)
 	use({ "RRethy/vim-illuminate", commit = "0603e75" }) -- highlight matching texts when cursor is on it
 
 	-- Telescope
-	use({ "nvim-telescope/telescope.nvim", commit = "9784730" })
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
+	use({ "nvim-telescope/telescope.nvim", commit = "9784730" })
 	use({ "nvim-telescope/telescope-file-browser.nvim", commit = "61b3769" }) -- It is useful when changing directories while running live-grep
 
 	-- Treesitter
@@ -125,6 +125,7 @@ return packer.startup(function(use)
 
 	-- Rust
 	use({ "simrat39/rust-tools.nvim" })
+	use({ "elkowar/yuck.vim" })
 	-- use({
 	-- 	"j-hui/fidget.nvim",
 	-- 	config = function()
@@ -162,7 +163,12 @@ return packer.startup(function(use)
 	-- 		require("user.barbecue")
 	-- 	end,
 	-- })
-  use({ "github/copilot.vim" })
+	use({ "github/copilot.vim" })
+
+	-- web development
+	-- use({ "mattn/emmet-vim" })
+	use({ "windwp/nvim-ts-autotag" })
+	use({ "manzeloth/live-server" })
 
 	use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
 	-- Automatically set up your configuration after cloning packer.nvim
