@@ -18,7 +18,6 @@ Run `nvim` and wait for the plugins to be installed,  or manually initiate the i
 
 **NOTE** (You will notice treesitter pulling in a bunch of parsers the next time you open Neovim) 
 
-To make this config I took a lot of inspiration from other already existing configs of pro vimmers such as [chris@machine](https://www.youtube.com/@chrisatmachine), [ThePrimeagen](https://www.youtube.com/@ThePrimeagen), [TJ DeVries](https://www.youtube.com/@teej_dv) and many others.
 
 ## Get healthy
 
@@ -62,4 +61,6 @@ Next we need to install python support (node is optional)
 ---
 
 **NOTE**: make sure you have `git`, `make`, `pip`, `npm`, `node` and `cargo` installed on your system.
+
+This config is heavily inspired and sometimes downright copied from [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch).
 
