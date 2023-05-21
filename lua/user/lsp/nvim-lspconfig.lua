@@ -189,38 +189,38 @@ require("lspconfig")["pyright"].setup({
 	settings = require("user.lsp.settings.pyright").settings,
 })
 
--- require("lspconfig")["rust_analyzer"].setup({
--- 	on_attach = on_attach,
--- 	flags = lsp_flags,
--- 	capabilities = capabilities,
--- })
-
-require("rust-tools").setup({
-	tools = {
-		runnables = {
-			use_telescope = true,
-		},
-		inlay_hints = {
-			auto = false,
-			show_parameter_hints = false,
-			parameter_hints_prefix = "",
-			other_hints_prefix = "",
-		},
-	},
-	server = {
-		on_attach = on_attach,
-		-- flags = lsp_flags,
-		-- capabilities = capabilities,
-		-- Hover actions
-		settings = {
-			["rust_analyzer"] = {
-				checkOnSave = {
-					command = "clippy",
-				},
-			},
-		},
-	},
+require("lspconfig")["rust_analyzer"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
 })
+
+-- require("rust-tools").setup({
+-- 	tools = {
+-- 		runnables = {
+-- 			use_telescope = true,
+-- 		},
+-- 		inlay_hints = {
+-- 			auto = false,
+-- 			show_parameter_hints = false,
+-- 			parameter_hints_prefix = "",
+-- 			other_hints_prefix = "",
+-- 		},
+-- 	},
+-- 	server = {
+-- 		on_attach = on_attach,
+-- 		-- flags = lsp_flags,
+-- 		-- capabilities = capabilities,
+-- 		-- Hover actions
+-- 		settings = {
+-- 			["rust_analyzer"] = {
+-- 				checkOnSave = {
+-- 					command = "clippy",
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 require("lspconfig")["lua_ls"].setup({
 	on_attach = on_attach,

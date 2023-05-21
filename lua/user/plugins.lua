@@ -125,14 +125,14 @@ return packer.startup(function(use)
 	use({ "tpope/vim-surround", commit = "3d188ed2113431cf8dac77be61b842acb64433d9" })
 
 	-- Rust
-	use({ "simrat39/rust-tools.nvim" })
+	-- use({ "simrat39/rust-tools.nvim" })
 	use({ "elkowar/yuck.vim" })
-	-- use({
-	-- 	"j-hui/fidget.nvim",
-	-- 	config = function()
-	-- 		require("fidget").setup()
-	-- 	end,
-	-- })
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
+	})
 	-- use({
 	-- 	"weilbith/nvim-code-action-menu",
 	-- 	cmd = "CodeActionMenu",
