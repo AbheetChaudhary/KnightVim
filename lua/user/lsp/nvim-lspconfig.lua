@@ -94,7 +94,7 @@ local on_attach = function(client, bufnr)
 	if client.name == "jdtls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
-	if client.name == "sumneko_lua" then
+	if client.name == "lua_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 	if client.name == "tsserver" then
@@ -222,7 +222,7 @@ require("rust-tools").setup({
 	},
 })
 
-require("lspconfig")["sumneko_lua"].setup({
+require("lspconfig")["lua_ls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
