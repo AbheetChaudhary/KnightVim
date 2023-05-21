@@ -64,7 +64,7 @@ return packer.startup(function(use)
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 	use({ "folke/tokyonight.nvim", commit = "29e2c68" })
 	use({ "lunarvim/darkplus.nvim", commit = "d308e95" })
-	use({ "navarasu/onedark.nvim", commit = "89dde49" })
+	use({ "navarasu/onedark.nvim" })
 	use({ "tanvirtin/monokai.nvim" })
 	use({ "ellisonleao/gruvbox.nvim" })
 	use({ "Mofiqul/dracula.nvim" })
@@ -79,6 +79,7 @@ return packer.startup(function(use)
 	use({ "saadparwaiz1/cmp_luasnip", commit = "1809552" }) -- snippet completions
 	use({ "hrsh7th/cmp-nvim-lsp", commit = "78924d1" }) -- its an extra source for cmp. Its the [LSP] one
 	use({ "hrsh7th/cmp-nvim-lua", commit = "d276254" })
+  use({ "PaterJason/cmp-conjure" }) -- conjure completion for lisp family
 
 	-- snippets
 	use({ "L3MON4D3/LuaSnip", commit = "663d544" }) --snippet engine
@@ -102,8 +103,8 @@ return packer.startup(function(use)
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-		commit = "eadfcad",
+		-- run = ":TSUpdate",
+		-- commit = "eadfcad",
 	})
 
 	-- Git
@@ -144,6 +145,10 @@ return packer.startup(function(use)
 		end,
 		commit = "d17dabd",
 	})
+
+  -- lisp
+	use({ "gpanders/nvim-parinfer" })
+  use({ "Olical/conjure" })
 
 	-- quick buffer switching
 	use({ "ThePrimeagen/harpoon", commit = "21d0d1b" })

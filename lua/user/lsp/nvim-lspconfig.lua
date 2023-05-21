@@ -88,16 +88,16 @@ local on_attach = function(client, bufnr)
 	-- 	require("nvim-navic").attach(client, bufnr)
 	-- end
 
-	if client.name == "tsserver" then
-		client.server_capabilities.documentFormattingProvider = false
-	end
-	if client.name == "sumneko_lua" then
+	if client.name == "clangd" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 	if client.name == "jdtls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
-	if client.name == "clangd" then
+	if client.name == "sumneko_lua" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 end
@@ -124,6 +124,26 @@ require("lspconfig")["clangd"].setup({
 	capabilities = require("user.lsp.settings.clangd").capabilities,
 
 	filetypes = { "c", "cpp" },
+})
+
+require("lspconfig")["emmet_ls"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+	filetypes = {
+		"css",
+		"eruby",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"less",
+		"sass",
+		"scss",
+		"svelte",
+		"pug",
+		"typescriptreact",
+		"vue",
+	},
 })
 
 require("lspconfig")["hls"].setup({
@@ -215,12 +235,6 @@ require("lspconfig")["taplo"].setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
 	filetypes = { "toml" },
-})
-
-require("lspconfig")["tailwindcss"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
 })
 
 require("lspconfig")["tsserver"].setup({

@@ -117,6 +117,7 @@ cmp.setup({
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
+				conjure = "[Conjure]",
 			})[entry.source.name]
 
 			-- fix width of completion and documentation menu
@@ -137,6 +138,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
+		{ name = "conjure" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
