@@ -23,6 +23,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
   vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
+  vim.keymap.set('n', '<LeftRelease>', api.node.open.edit, opts("Open")) -- open with single leftclick
 
 end
 

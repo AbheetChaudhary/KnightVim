@@ -53,7 +53,7 @@ return packer.startup(function(use)
 	use({ "nvim-lualine/lualine.nvim", commit = "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" })
 	use({ "akinsho/toggleterm.nvim", commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda" })
 	use({ "lukas-reineke/indent-blankline.nvim", commit = "018bd04d80c9a73d399c1061fa0c3b14a7614399" })
-	use({ "lewis6991/impatient.nvim", commit = "47302af74be7b79f002773011f0d8e85679a7618" })
+	use({ "lewis6991/impatient.nvim", commit = "47302af74be7b79f002773011f0d8e85679a7618" }) -- this wont be required after neovim 0.9 update
 	use({ "goolord/alpha-nvim", commit = "1838ae926e8d49fe5330d1498ee8289ae2c340bc" })
 	-- use({ "antoinemadec/FixCursorHold.nvim", commit = "70a9516" }) -- This is needed to fix lsp doc highlight
 	use({ "nvim-tree/nvim-web-devicons", commit = "986875b7364095d6535e28bd4aac3a9357e91bbe" })
@@ -62,8 +62,8 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-	use({ "folke/tokyonight.nvim", commit = "29e2c68" })
-	use({ "lunarvim/darkplus.nvim", commit = "d308e95" })
+	use({ "folke/tokyonight.nvim" })
+	use({ "lunarvim/darkplus.nvim" })
 	use({ "navarasu/onedark.nvim" })
 	use({ "tanvirtin/monokai.nvim" })
 	use({ "ellisonleao/gruvbox.nvim" })
@@ -137,6 +137,10 @@ return packer.startup(function(use)
 	-- 	"weilbith/nvim-code-action-menu",
 	-- 	cmd = "CodeActionMenu",
 	-- })
+	use({
+		"kosayoda/nvim-lightbulb",
+		requires = "antoinemadec/FixCursorHold.nvim",
+	})
 
 	use({
 		"uga-rosa/ccc.nvim",
