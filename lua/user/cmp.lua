@@ -1,11 +1,12 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
-	vim.notify("CMP instance failed to start! Returning...")
+	print("CMP instance failed to start! Returning...")
 	return
 end
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
+  print("Could not find luasnip...")
 	return
 end
 

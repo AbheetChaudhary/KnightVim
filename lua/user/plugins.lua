@@ -43,21 +43,29 @@ packer.init({
 return packer.startup(function(use)
 	use { "wbthomason/packer.nvim", commit = "6afb674" } -- Have packer manage itself
 
+  -- use { 
+  --   "catppuccin/nvim",
+  --   as = "catppuccin",
+  --   config = function()
+  --     require('catppuccin').setup({
+  --       flavour = "macchiato",
+  --     })
+  --     vim.cmd('colorscheme catppuccin')
+  --   end,
+  -- }
+
   use { 
-    "catppuccin/nvim",
-    as = "catppuccin",
+    "navarasu/onedark.nvim",
+    as = "onedark",
     config = function()
-      require('catppuccin').setup({
-        flavour = "macchiato",
-      })
-      vim.cmd('colorscheme catppuccin')
+      require('user.colorscheme')
     end,
   }
 
   use {
     'goolord/alpha-nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
-    after = "catppuccin",
+    after = "onedark",
     config = function ()
       require('user.alpha')
     end
@@ -66,7 +74,7 @@ return packer.startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-    event = "BufReadPre",
+    event = {"BufReadPre", "BufNewFile"},
     config = function()
       require('user.lualine')
     end,
@@ -95,11 +103,96 @@ return packer.startup(function(use)
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make',
-    require = 'nvim-telescope/telescope.nvim',
+    -- requires = 'nvim-telescope/telescope.nvim',
   }
 
   use {
     "nvim-telescope/telescope-file-browser.nvim",
-    require = "nvim-telescope/telescope.nvim",
+    -- requires = "nvim-telescope/telescope.nvim",
   }
+
+   use {
+      "L3MON4D3/LuaSnip",
+      event = "InsertEnter",
+   }
+
+   use {
+      "hrsh7th/nvim-cmp",
+      config = function()
+        require('user.cmp')
+      end,
+      after = "LuaSnip",
+   }
+
+   use {
+      "saadparwaiz1/cmp_luasnip",
+      after = "nvim-cmp",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lua",
+      after = "cmp_luasnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lsp",
+      after = "cmp-nvim-lua",
+   }
+
+   use {
+      "hrsh7th/cmp-buffer",
+      after = "cmp-nvim-lsp",
+   }
+
+   use {
+      "rafamadriz/friendly-snippets",
+      after = "cmp-buffer",
+   }
+
+   use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
+    end,
+    ft = { "c", "lua", "python", "rust", "java", "javascript", "typescript", "vim", "vimdoc", "query" },
+    config = function()
+      require('user.treesitter')
+    end,
+}
+  use {
+  'lewis6991/gitsigns.nvim',
+  config = function()
+    require('gitsigns').setup()
+  end
+  }
+
+  use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require('user.project')
+    end
+  }
+
+  -- use {
+  --   "williamboman/mason.nvim",
+  --   run = ":MasonUpdate",
+  --   ft = { "c", "cpp", "lua", "python", "rust", "java", "javascript", "javascriptreact", "typescriptreact", "typescript", "html", "css", "scss", "vue" },
+  --   config = function()
+  --     require('mason').setup()
+  --   end,
+  -- }
+
+  -- use {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   after = "williamboman/mason.nvim",
+  --   config = function()
+  --     require('user.lsp-config')
+  --   end,
+  -- }
+
+  -- use { 
+  --   "neovim/nvim-lspconfig",
+  -- }
+
 end)
