@@ -42,6 +42,7 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
 	use { "wbthomason/packer.nvim", commit = "6afb674" } -- Have packer manage itself
+
   use { 
     "catppuccin/nvim",
     as = "catppuccin",
@@ -52,6 +53,7 @@ return packer.startup(function(use)
       vim.cmd('colorscheme catppuccin')
     end,
   }
+
   use {
     'goolord/alpha-nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
@@ -62,11 +64,22 @@ return packer.startup(function(use)
   }
 
   use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-  event = "BufReadPre",
-  config = function()
-    require('user.lualine')
-  end,
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+    event = "BufReadPre",
+    config = function()
+      require('user.lualine')
+    end,
+  }
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+    cmd = "NvimTreeToggle",
+    config = function()
+      require('user.nvim-tree')
+    end
   }
 end)
