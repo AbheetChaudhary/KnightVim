@@ -86,7 +86,20 @@ return packer.startup(function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} },
-    -- keys = {"<leader>"},
     cmd = "Telescope",
+    config = function()
+      require('user.telescope')
+    end,
+  }
+
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
+    require = 'nvim-telescope/telescope.nvim',
+  }
+
+  use {
+    "nvim-telescope/telescope-file-browser.nvim",
+    require = "nvim-telescope/telescope.nvim",
   }
 end)
