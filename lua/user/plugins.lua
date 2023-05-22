@@ -131,22 +131,27 @@ return packer.startup(function(use)
 
    use {
       "hrsh7th/cmp-nvim-lua",
-      after = "cmp_luasnip",
+      after = "nvim-cmp",
    }
 
    use {
       "hrsh7th/cmp-nvim-lsp",
-      after = "cmp-nvim-lua",
+      after = "nvim-cmp",
    }
 
    use {
       "hrsh7th/cmp-buffer",
-      after = "cmp-nvim-lsp",
+      after = "nvim-cmp",
+   }
+
+   use {
+      "hrsh7th/cmp-path",
+      after = "nvim-cmp",
    }
 
    use {
       "rafamadriz/friendly-snippets",
-      after = "cmp-buffer",
+      after = "nvim-cmp",
    }
 
    use {
@@ -159,7 +164,16 @@ return packer.startup(function(use)
     config = function()
       require('user.treesitter')
     end,
-}
+  }
+
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function ()
+      require('user.lsp.null-ls')
+    end,
+    after = "nvim-treesitter",
+  }
+
   use {
   'lewis6991/gitsigns.nvim',
   config = function()
@@ -174,25 +188,50 @@ return packer.startup(function(use)
     end
   }
 
-  -- use {
-  --   "williamboman/mason.nvim",
-  --   run = ":MasonUpdate",
-  --   ft = { "c", "cpp", "lua", "python", "rust", "java", "javascript", "javascriptreact", "typescriptreact", "typescript", "html", "css", "scss", "vue" },
-  --   config = function()
-  --     require('mason').setup()
-  --   end,
-  -- }
+  use {
+    "williamboman/mason.nvim",
+    -- after = "nvim-treesitter",
+    config = function ()
+      require('mason').setup()
+    end,
+  }
 
-  -- use {
-  --   "williamboman/mason-lspconfig.nvim",
-  --   after = "williamboman/mason.nvim",
-  --   config = function()
-  --     require('user.lsp-config')
-  --   end,
-  -- }
+  use {
+    "williamboman/mason-lspconfig.nvim",
+    -- after = "mason.nvim",
+    config = function ()
+      require('mason-lspconfig').setup()
+    end,
+  }
 
-  -- use { 
-  --   "neovim/nvim-lspconfig",
-  -- }
+  use {
+    "RRethy/vim-illuminate",
+    after = "nvim-treesitter",
+  }
+
+  use {
+    "neovim/nvim-lspconfig",
+    after = "cmp-nvim-lsp",
+    config = function()
+      require('user.lsp.nvim-lspconfig')
+    end,
+  }
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('user.comment')
+    end,
+    event = {"BufReadPre", "BufNewFile"},
+  }
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+        require('user.autopairs')
+    end,
+    after = "nvim-cmp",
+  }
+
 
 end)

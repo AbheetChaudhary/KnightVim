@@ -38,7 +38,6 @@ local on_attach = function(client, bufnr)
 		return
 	end
 	illuminate.on_attach(client)
-	-- end
 
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -91,7 +90,7 @@ local on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
-	if client.name == "sumneko_lua" then
+	if client.name == "lua_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 	if client.name == "jdtls" then
@@ -108,15 +107,6 @@ local lsp_flags = {
 }
 
 -- Add LSP settings in alphabetical order
-
-require("lspconfig")["awk_ls"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = require("user.lsp.settings.clangd").capabilities,
-
-	cmd = { "awk-language-server" },
-	filetypes = { "awk" },
-})
 
 require("lspconfig")["clangd"].setup({
 	on_attach = on_attach,
@@ -165,58 +155,18 @@ require("lspconfig")["pyright"].setup({
 	settings = require("user.lsp.settings.pyright").settings,
 })
 
--- require("lspconfig")["rust_analyzer"].setup({
--- 	on_attach = on_attach,
--- 	flags = lsp_flags,
--- 	capabilities = capabilities,
--- })
-
-require("rust-tools").setup({
-	tools = {
-		runnables = {
-			use_telescope = true,
-		},
-		inlay_hints = {
-			auto = false,
-			show_parameter_hints = false,
-			parameter_hints_prefix = "",
-			other_hints_prefix = "",
-		},
-	},
-	server = {
-		on_attach = on_attach,
-		-- flags = lsp_flags,
-		-- capabilities = capabilities,
-		-- Hover actions
-		settings = {
-			["rust_analyzer"] = {
-				checkOnSave = {
-					command = "clippy",
-				},
-			},
-		},
-	},
+require("lspconfig")["rust_analyzer"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
 })
 
-require("lspconfig")["sumneko_lua"].setup({
+require("lspconfig")["lua_ls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
 
 	settings = require("user.lsp.settings.sumneko_lua").settings,
-})
-
-require("lspconfig")["taplo"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
-	filetypes = { "toml" },
-})
-
-require("lspconfig")["tailwindcss"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
 })
 
 require("lspconfig")["tsserver"].setup({
@@ -225,10 +175,4 @@ require("lspconfig")["tsserver"].setup({
 	capabilities = capabilities,
 })
 
-require("lspconfig")["vimls"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
-})
-
-require("user.lsp.null-ls")
+-- require("user.lsp.null-ls")
