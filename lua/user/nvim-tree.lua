@@ -52,29 +52,12 @@ nvim_tree.setup({
 		update_cwd = true,
 		ignore_list = {},
 	},
-	git = {
-		enable = true,
-		ignore = true,
-		timeout = 500,
-	},
 	view = {
 		width = 30,
 		hide_root_folder = false,
 		side = "left",
 		number = false,
 		relativenumber = false,
-
-		float = {
-			enable = false,
-			open_win_config = {
-				relative = "editor",
-				border = "rounded",
-				width = 30,
-				height = 30,
-				row = 1,
-				col = 1,
-			},
-		},
 	},
 	actions = {
 		open_file = {
