@@ -52,6 +52,11 @@ nvim_tree.setup({
 		update_cwd = true,
 		ignore_list = {},
 	},
+	git = {
+		enable = true,
+		ignore = false,
+		timeout = 500,
+	},
 	view = {
 		width = 30,
 		hide_root_folder = false,

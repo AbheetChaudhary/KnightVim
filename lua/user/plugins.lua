@@ -82,4 +82,11 @@ return packer.startup(function(use)
       require('user.nvim-tree')
     end
   }
+
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    requires = { {'nvim-lua/plenary.nvim'} },
+    -- keys = {"<leader>"},
+    cmd = "Telescope",
+  }
 end)
