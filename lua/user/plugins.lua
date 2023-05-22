@@ -43,29 +43,49 @@ packer.init({
 return packer.startup(function(use)
 	use { "wbthomason/packer.nvim", commit = "6afb674" } -- Have packer manage itself
 
-  -- use { 
+  -- use {
   --   "catppuccin/nvim",
   --   as = "catppuccin",
   --   config = function()
   --     require('catppuccin').setup({
-  --       flavour = "macchiato",
+  --       flavour = "mocha",
   --     })
   --     vim.cmd('colorscheme catppuccin')
   --   end,
   -- }
 
-  use { 
-    "navarasu/onedark.nvim",
-    as = "onedark",
-    config = function()
-      require('user.colorscheme')
+  use {
+    "lunarvim/darkplus.nvim",
+    as = 'darkplus',
+    config = function ()
+      vim.cmd('colorscheme darkplus')
     end,
   }
+
+  -- use { 
+  --   "navarasu/onedark.nvim",
+  --   as = "onedark",
+  --   config = function()
+  --     require('user.onedark')
+  --   end,
+  -- }
+
+  -- use { 'rose-pine/neovim',
+  --   as = 'rose-pine',
+  --   config = function ()
+  --     require('rose-pine').setup({
+  --       variant = 'moon',
+  --       dark_variant = 'moon',
+  --     })
+  --     vim.cmd('colorscheme rose-pine')
+  --   end,
+  -- }
+
 
   use {
     'goolord/alpha-nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
-    after = "onedark",
+    after = "darkplus",
     config = function ()
       require('user.alpha')
     end
@@ -73,7 +93,7 @@ return packer.startup(function(use)
 
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+    requires = { 'nvim-tree/nvim-web-devicons' },
     event = {"BufReadPre", "BufNewFile"},
     config = function()
       require('user.lualine')
@@ -160,7 +180,7 @@ return packer.startup(function(use)
         local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
         ts_update()
     end,
-    ft = { "c", "lua", "python", "rust", "java", "javascript", "typescript", "vim", "vimdoc", "query" },
+    ft = { "c", "lua", "python", "rust", "java", "javascript", "typescript", "vim", "vimdoc", "query", "html", "css", "scss", "json", "markdown", "scheme", "solidity" },
     config = function()
       require('user.treesitter')
     end,
@@ -233,5 +253,47 @@ return packer.startup(function(use)
     after = "nvim-cmp",
   }
 
+  -- use {
+  --   "moll/vim-bbye",
+  --   event = {"BufReadPre", "BufNewFile"},
+  -- }
+
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function ()
+      require('user.indentline')
+    end,
+    after = "nvim-treesitter",
+  }
+
+  use {
+    "tpope/vim-surround",
+    event = {"BufReadPre", "BufNewFile"},
+  }
+
+	use {
+		"phaazon/hop.nvim",
+		commit = "90db1b2",
+		branch = "v2", -- optional but strongly recommended
+    config = function ()
+      require('user.hop')
+    end,
+    event = {"BufReadPre", "BufNewFile"},
+	}
+
+	use {
+    "ThePrimeagen/harpoon",
+    commit = "21d0d1b",
+    config = function ()
+      require('user.harpoon')
+    end,
+  }
+	use {
+    "matbme/JABS.nvim",
+    config = function ()
+      require('user.jabs')
+    end,
+    event = {"BufReadPre", "BufNewFile"},
+  }
 
 end)

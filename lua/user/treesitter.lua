@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 configs.setup({
-	ensure_installed = { "c", "lua", "python", "rust", "javascript", "typescript", "vim", "vimdoc", "query" },
+	ensure_installed = { "c", "lua", "python", "rust", "javascript", "typescript", "vim", "vimdoc", "query", "html", "css", "scss", "json", "markdown", "scheme", "solidity" },
 	sync_install = false, -- install languages synchronously (only applied to 'ensure_installed')
 	autopairs = {
 		enable = true,
