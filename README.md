@@ -63,4 +63,3 @@ Next we need to install python support (node is optional)
 **NOTE**: make sure you have `git`, `make`, `pip`, `npm`, `node` and `cargo` installed on your system.
 
 This config is heavily inspired and sometimes downright copied from [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch).
-

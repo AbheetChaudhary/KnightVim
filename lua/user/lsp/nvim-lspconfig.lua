@@ -88,16 +88,16 @@ local on_attach = function(client, bufnr)
 	-- 	require("nvim-navic").attach(client, bufnr)
 	-- end
 
-	if client.name == "tsserver" then
-		client.server_capabilities.documentFormattingProvider = false
-	end
-	if client.name == "sumneko_lua" then
+	if client.name == "clangd" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 	if client.name == "jdtls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
-	if client.name == "clangd" then
+	if client.name == "lua_ls" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 end
@@ -124,6 +124,30 @@ require("lspconfig")["clangd"].setup({
 	capabilities = require("user.lsp.settings.clangd").capabilities,
 
 	filetypes = { "c", "cpp" },
+})
+
+require("lspconfig")["emmet_ls"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+	filetypes = {
+		"css",
+		"eruby",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"less",
+		"sass",
+		"scss",
+		"svelte",
+		"pug",
+		"typescriptreact",
+		"vue",
+	},
+})
+
+require("lspconfig")["hls"].setup({
+	filetypes = { "haskell", "lhaskell", "cabal" },
 })
 
 require("lspconfig")["jsonls"].setup({
@@ -165,40 +189,40 @@ require("lspconfig")["pyright"].setup({
 	settings = require("user.lsp.settings.pyright").settings,
 })
 
--- require("lspconfig")["rust_analyzer"].setup({
--- 	on_attach = on_attach,
--- 	flags = lsp_flags,
--- 	capabilities = capabilities,
--- })
-
-require("rust-tools").setup({
-	tools = {
-		runnables = {
-			use_telescope = true,
-		},
-		inlay_hints = {
-			auto = false,
-			show_parameter_hints = false,
-			parameter_hints_prefix = "",
-			other_hints_prefix = "",
-		},
-	},
-	server = {
-		on_attach = on_attach,
-		-- flags = lsp_flags,
-		-- capabilities = capabilities,
-		-- Hover actions
-		settings = {
-			["rust_analyzer"] = {
-				checkOnSave = {
-					command = "clippy",
-				},
-			},
-		},
-	},
+require("lspconfig")["rust_analyzer"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
 })
 
-require("lspconfig")["sumneko_lua"].setup({
+-- require("rust-tools").setup({
+-- 	tools = {
+-- 		runnables = {
+-- 			use_telescope = true,
+-- 		},
+-- 		inlay_hints = {
+-- 			auto = false,
+-- 			show_parameter_hints = false,
+-- 			parameter_hints_prefix = "",
+-- 			other_hints_prefix = "",
+-- 		},
+-- 	},
+-- 	server = {
+-- 		on_attach = on_attach,
+-- 		-- flags = lsp_flags,
+-- 		-- capabilities = capabilities,
+-- 		-- Hover actions
+-- 		settings = {
+-- 			["rust_analyzer"] = {
+-- 				checkOnSave = {
+-- 					command = "clippy",
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- })
+
+require("lspconfig")["lua_ls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
@@ -211,12 +235,6 @@ require("lspconfig")["taplo"].setup({
 	flags = lsp_flags,
 	capabilities = capabilities,
 	filetypes = { "toml" },
-})
-
-require("lspconfig")["tailwindcss"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
 })
 
 require("lspconfig")["tsserver"].setup({

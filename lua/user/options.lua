@@ -36,15 +36,30 @@ local options = {
   wrap = false,                            -- display lines as one long line
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
-  guifont = "JetBrainsMono Nerd Font:h10",               -- the font used in graphical neovim applications
+  guifont = "JetBrainsMono Nerd Font:h7",               -- the font used in graphical neovim applications like neovide
   title = true,
   lazyredraw = true,
 
 }
+
+-- CodeActionMenu
 -- vim.g.code_action_menu_window_border = "single"
 -- vim.g.code_action_menu_show_details = false
--- vim.g.code_action_menu_show_diff = false
-vim.g.code_action_menu_show_action_kind = true
+-- vim.g.code_action_menu_show_diff = true
+-- vim.g.code_action_menu_show_action_kind = false
+
+-- Conjure
+-- https://github.com/Olical/conjure/issues/472
+vim.cmd('let g:conjure#filetypes = ["scheme"]')
+vim.cmd('let g:conjure#filetype#rust = v:false')
+vim.cmd('let g:conjure#filetype#clojure = v:false')
+vim.cmd('let g:conjure#filetype#fennel = v:false')
+vim.cmd('let g:conjure#filetype#janet = v:false')
+vim.cmd('let g:conjure#filetype#hy = v:false')
+vim.cmd('let g:conjure#filetype#racket = v:false')
+vim.cmd('let g:conjure#filetype#lua = v:false')
+vim.cmd('let g:conjure#filetype#lisp = v:false')
+vim.cmd('let g:conjure#filetype#python = v:false')
 
 vim.opt.fillchars = vim.opt.fillchars + 'eob: '
 vim.opt.fillchars:append {
@@ -57,10 +72,10 @@ for key, value in pairs(options) do
   vim.opt[key] = value
 end
 
-vim.cmd "set whichwrap+=<,>,[,],"
-vim.cmd [[set iskeyword+=-]]
-vim.cmd [[filetype plugin indent on]]
-vim.cmd [[filetype indent on]]
+vim.cmd('set whichwrap+=<,>,[,],')
+vim.cmd('set iskeyword+=-')
+vim.cmd('filetype plugin indent on')
+vim.cmd('filetype indent on')
 
 vim.filetype.add {
   extension = {

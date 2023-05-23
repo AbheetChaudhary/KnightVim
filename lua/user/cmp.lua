@@ -16,34 +16,33 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
-
---   פּ ﯟ   some other good icons
 local kind_icons = {
-	Text = "",
-	Method = "m",
-	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "",
+	Text = "󰉿",
+	Method = "󰆧",
+	Function = "󰊕",
+	Constructor = "",
+	Field = " ",
+	Variable = "󰀫",
+	Class = "󰠱",
 	Interface = "",
 	Module = "",
-	Property = "",
-	Unit = "",
-	Value = "",
+	Property = "󰜢",
+	Unit = "󰑭",
+	Value = "󰎠",
 	Enum = "",
-	Keyword = "",
+	Keyword = "󰌋",
 	Snippet = "",
-	Color = "",
-	File = "",
+	Color = "󰏘",
+	File = "󰈙",
 	Reference = "",
-	Folder = "",
+	Folder = "󰉋",
 	EnumMember = "",
-	Constant = "",
+	Constant = "󰏿",
 	Struct = "",
 	Event = "",
-	Operator = "",
-	TypeParameter = "",
+	Operator = "󰆕",
+	TypeParameter = " ",
+	Misc = " ",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -118,6 +117,7 @@ cmp.setup({
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
+				conjure = "[Conjure]",
 			})[entry.source.name]
 
 			-- fix width of completion and documentation menu
@@ -146,11 +146,22 @@ cmp.setup({
 	window = {
 		documentation = cmp.config.window.bordered(),
 		-- completion = cmp.config.window.bordered({ "╭", "─", "╮", "│", "╯", "─", "╰", "│" }),
-    -- border can have any single width character
+		-- border can have any single width character
 	},
-  preselect = cmp.PreselectMode.None, -- select no completion by default
+	preselect = cmp.PreselectMode.None, -- select no completion by default
 	experimental = {
 		ghost_text = false, -- find a way to disable this while writing comments
 		native_menu = false,
 	},
 })
+
+local _cmp = vim.api.nvim_create_augroup("_cmp", { clear = true })
+vim.api.nvim_create_autocmd("Filetype", {
+	pattern = { "scheme" },
+	command = "lua require('cmp').setup.buffer{ sources = { { name = 'conjure' }, } }",
+	group = _cmp,
+})
+vim.api.nvim_create_autocmd(
+	"Filetype",
+	{ pattern = "NvimTree", command = "lua require('cmp').setup.buffer { enabled = false }", group = _cmp }
+)

@@ -40,14 +40,14 @@ require("jabs").setup({
 
 	-- Default symbols
 	symbols = {
-		current = "C", -- default 
-		split = "S", -- default 
-		alternate = "A", -- default 
-		hidden = "H", -- default ﬘
-		locked = "L", -- default 
-		ro = "R", -- default 
-		edited = "E", -- default 
-		terminal = "T", -- default 
+		current = "C",
+		split = "S",
+		alternate = "A",
+		hidden = "H",
+		locked = "L",
+		ro = "R",
+		edited = "E",
+		terminal = "T",
 		default_file = "D", -- Filetype icon if not present in nvim-web-devicons. Default 
 		terminal_symbol = ">_", -- Filetype icon for a terminal split. Default 
 	},
