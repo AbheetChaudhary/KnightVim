@@ -21,7 +21,7 @@ local kind_icons = {
 	Method = "󰆧",
 	Function = "󰊕",
 	Constructor = "",
-  Field = " ",
+	Field = " ",
 	Variable = "󰀫",
 	Class = "󰠱",
 	Interface = "",
@@ -31,17 +31,17 @@ local kind_icons = {
 	Value = "󰎠",
 	Enum = "",
 	Keyword = "󰌋",
-  Snippet = "",
+	Snippet = "",
 	Color = "󰏘",
 	File = "󰈙",
-  Reference = "",
+	Reference = "",
 	Folder = "󰉋",
 	EnumMember = "",
 	Constant = "󰏿",
-  Struct = "",
+	Struct = "",
 	Event = "",
 	Operator = "󰆕",
-  TypeParameter = " ",
+	TypeParameter = " ",
 	Misc = " ",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
@@ -138,7 +138,6 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
-		{ name = "conjure" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
@@ -155,3 +154,14 @@ cmp.setup({
 		native_menu = false,
 	},
 })
+
+local _cmp = vim.api.nvim_create_augroup("_cmp", { clear = true })
+vim.api.nvim_create_autocmd("Filetype", {
+	pattern = { "scheme" },
+	command = "lua require('cmp').setup.buffer{ sources = { { name = 'conjure' }, } }",
+	group = _cmp,
+})
+vim.api.nvim_create_autocmd(
+	"Filetype",
+	{ pattern = "NvimTree", command = "lua require('cmp').setup.buffer { enabled = false }", group = _cmp }
+)
