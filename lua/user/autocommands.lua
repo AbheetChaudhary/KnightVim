@@ -17,7 +17,10 @@ vim.api.nvim_create_autocmd("FileType", { pattern = "markdown", command = "setlo
 --   augroup end
 
 local _alpha = vim.api.nvim_create_augroup("_alpha", { clear = true })
-vim.api.nvim_create_autocmd("User", { pattern = "AlphaReady", command = "set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2", group = _alpha })
+vim.api.nvim_create_autocmd("User", { pattern = "AlphaReady", command = "set laststatus=0 | autocmd BufUnload <buffer> set laststatus=3", group = _alpha })
+
+-- local _test = vim.api.nvim_create_augroup("_test", { clear = true })
+-- vim.api.nvim_create_autocmd("User", { pattern = "CmpReady", command = "echo 'hello, world'", group = _alpha })
 
 -- " if has_key(environ(), 'TMUX')
 -- "   augroup tmux_something
@@ -39,9 +42,9 @@ vim.api.nvim_create_autocmd("User", { pattern = "AlphaReady", command = "set sho
 -- "         \ let w:m1=matchadd('CollumnLimit', pattern, -1)
 -- " augroup END
 
-local _python = vim.api.nvim_create_augroup("_python", { clear = true })
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.sage", ".pyx", "*.spyx" }, command = "set filetype=python", group = _python })
-vim.api.nvim_create_autocmd("FileType", { pattern = "python", command = "set tabstop=4 | set shiftwidth=4 | set expandtab | set makeprg=sage -b && sage -t %", group = _python })
+-- local _python = vim.api.nvim_create_augroup("_python", { clear = true })
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.sage", ".pyx", "*.spyx" }, command = "set filetype=python", group = _python })
+-- vim.api.nvim_create_autocmd("FileType", { pattern = "python", command = "set tabstop=4 | set shiftwidth=4 | set expandtab | set makeprg=sage -b && sage -t %", group = _python })
 
 -- Autoformat
 -- augroup _lsp
@@ -65,3 +68,4 @@ vim.api.nvim_create_autocmd("FileType", { pattern = "python", command = "set tab
 -- 	end,
 -- 	group = cybu,
 -- })
+

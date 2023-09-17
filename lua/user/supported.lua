@@ -1,0 +1,70 @@
+Support = {
+
+  -- treesitter
+	ts = {
+		"c",
+		"cs",
+		"lua",
+		"python",
+		"rust",
+		"java",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"vim",
+		"vimdoc",
+		"query",
+		"html",
+		"css",
+		"scss",
+		"json",
+		"markdown",
+		"scheme",
+		"solidity",
+	},
+
+  -- null-ls
+	nullLs = {
+		"c",
+		"cs",
+		"cpp",
+		"lua",
+		"python",
+		"rust",
+		"java",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"css",
+		"scss",
+		"json",
+		"markdown",
+		"solidity",
+	},
+
+  -- lsp
+	lsp = {
+		"c",
+		"cs",
+		"cpp",
+		"lua",
+		"python",
+		"rust",
+		"java",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"css",
+		"scss",
+		"json",
+		"markdown",
+		"solidity",
+	},
+}
+
+return Support

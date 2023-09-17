@@ -1,10 +1,13 @@
 return {
-	settings = {
-
-		python = {
-			analysis = {
-				typeCheckingMode = "off",
-			},
-		},
-	},
+settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391'},
+          maxLineLength = 100
+        }
+      }
+    }
+  }
 }
+

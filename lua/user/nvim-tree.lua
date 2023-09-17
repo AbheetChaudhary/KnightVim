@@ -54,7 +54,7 @@ nvim_tree.setup({
 	},
 	git = {
 		enable = true,
-		ignore = true,
+		ignore = false,
 		timeout = 500,
 	},
 	view = {
@@ -63,18 +63,6 @@ nvim_tree.setup({
 		side = "left",
 		number = false,
 		relativenumber = false,
-
-		float = {
-			enable = false,
-			open_win_config = {
-				relative = "editor",
-				border = "rounded",
-				width = 30,
-				height = 30,
-				row = 1,
-				col = 1,
-			},
-		},
 	},
 	actions = {
 		open_file = {
@@ -116,3 +104,4 @@ nvim_tree.setup({
 		},
 	},
 })
+

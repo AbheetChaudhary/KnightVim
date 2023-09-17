@@ -13,17 +13,19 @@ null_ls.setup({
 	-- on_init = function(new_client, _)
 	-- new_client.offset_encoding = "utf-8"
 	-- end,
+  border = 'rounded',
 
 	debug = false,
 	sources = {
 		formatting.prettier.with({
-			filetypes = { "html", "css", "javascript", "json", "markdown" },
+			filetypes = { "html", "css", "javascript", "json", "javascriptreact", "markdown" },
 			extra_args = { "--single-quote", "--jsx-single-quote" },
 		}),
 		formatting.black.with({ extra_args = { "--fast", "--line-length=80" }, filetypes = { "python" } }),
 		-- formatting.yapf,
 		formatting.stylua.with({ filetypes = { "lua" } }),
 		diagnostics.flake8.with({ extra_args = { "--extend-ignore=F821,E302,E501" }, filetypes = { "python" } }),
+		-- diagnostics.pylint.with({ filetypes = { "python" } }),
 		formatting.clang_format.with({ filetypes = { "c", "cpp", "java" } }),
 		-- formatting.google_java_format.with({filetypes = { "java"}, args = { "-"}}), -- It could be replaced with clang-format
 		formatting.rustfmt.with({
@@ -33,3 +35,5 @@ null_ls.setup({
 		}),
 	},
 })
+
+vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]])

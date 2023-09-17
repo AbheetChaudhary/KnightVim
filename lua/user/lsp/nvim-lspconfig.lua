@@ -3,6 +3,8 @@
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+local pid = vim.fn.getpid()
+
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -38,7 +40,6 @@ local on_attach = function(client, bufnr)
 		return
 	end
 	illuminate.on_attach(client)
-	-- end
 
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -88,7 +89,10 @@ local on_attach = function(client, bufnr)
 	-- 	require("nvim-navic").attach(client, bufnr)
 	-- end
 
-	if client.name == "clangd" then
+	if client.name == "tsserver" then
+		client.server_capabilities.documentFormattingProvider = false
+	end
+	if client.name == "lua_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 	if client.name == "jdtls" then
@@ -109,13 +113,12 @@ local lsp_flags = {
 
 -- Add LSP settings in alphabetical order
 
-require("lspconfig")["awk_ls"].setup({
+require("lspconfig")["arduino_language_server"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
-	capabilities = require("user.lsp.settings.clangd").capabilities,
+	capabilities = capabilities,
 
-	cmd = { "awk-language-server" },
-	filetypes = { "awk" },
+	filetypes = { "arduino" },
 })
 
 require("lspconfig")["clangd"].setup({
@@ -126,28 +129,12 @@ require("lspconfig")["clangd"].setup({
 	filetypes = { "c", "cpp" },
 })
 
-require("lspconfig")["emmet_ls"].setup({
+require("lspconfig")["dockerls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
-	filetypes = {
-		"css",
-		"eruby",
-		"html",
-		"javascript",
-		"javascriptreact",
-		"less",
-		"sass",
-		"scss",
-		"svelte",
-		"pug",
-		"typescriptreact",
-		"vue",
-	},
-})
 
-require("lspconfig")["hls"].setup({
-	filetypes = { "haskell", "lhaskell", "cabal" },
+	filetypes = { "dockerfile" },
 })
 
 require("lspconfig")["jsonls"].setup({
@@ -165,13 +152,13 @@ require("lspconfig")["jdtls"].setup({
 	capabilities = capabilities,
 
 	single_file_support = true,
-	-- settings = {
-	-- 	java = {
-	-- 		completion = {
-	-- 			overwrite = true,
-	-- 		},
-	-- 	},
-	-- },
+	settings = {
+		java = {
+			completion = {
+				overwrite = true,
+			},
+		},
+	},
 	cmd = { "jdtls" },
 
 	-- cmd = require("user.lsp.settings.jdtls").cmd,
@@ -179,6 +166,13 @@ require("lspconfig")["jdtls"].setup({
 	-- init_options = require("user.lsp.settings.jdtls").init_options,
 	-- root_dir = require("user.lsp.settings.jdtls").root_dir,
 	-- single_file_support = require("user.lsp.settings.jdtls").single_file_support,
+})
+
+require("lspconfig").omnisharp.setup({
+  cmd = { "/home/goliath/.omnisharp/OmniSharp" },
+  on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
 })
 
 require("lspconfig")["pyright"].setup({
@@ -195,33 +189,6 @@ require("lspconfig")["rust_analyzer"].setup({
 	capabilities = capabilities,
 })
 
--- require("rust-tools").setup({
--- 	tools = {
--- 		runnables = {
--- 			use_telescope = true,
--- 		},
--- 		inlay_hints = {
--- 			auto = false,
--- 			show_parameter_hints = false,
--- 			parameter_hints_prefix = "",
--- 			other_hints_prefix = "",
--- 		},
--- 	},
--- 	server = {
--- 		on_attach = on_attach,
--- 		-- flags = lsp_flags,
--- 		-- capabilities = capabilities,
--- 		-- Hover actions
--- 		settings = {
--- 			["rust_analyzer"] = {
--- 				checkOnSave = {
--- 					command = "clippy",
--- 				},
--- 			},
--- 		},
--- 	},
--- })
-
 require("lspconfig")["lua_ls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
@@ -230,23 +197,36 @@ require("lspconfig")["lua_ls"].setup({
 	settings = require("user.lsp.settings.sumneko_lua").settings,
 })
 
-require("lspconfig")["taplo"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
-	filetypes = { "toml" },
-})
-
 require("lspconfig")["tsserver"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
 })
 
-require("lspconfig")["vimls"].setup({
+require("lspconfig")["tailwindcss"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
+
+	filetypes = {
+		"django-html",
+		"htmldjango",
+		"gohtml",
+		"html",
+		"html-eex",
+		"php",
+		"css",
+		"less",
+		"postcss",
+		"sass",
+		"scss",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"vue",
+		"svelte",
+	},
 })
 
-require("user.lsp.null-ls")
+-- require("user.lsp.null-ls")

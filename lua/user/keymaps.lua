@@ -44,7 +44,7 @@ keymap("n", "<C-Right>", ":vertical resize +1<CR>", opts)
 -- Navigate buffers
 keymap("n", "<c-PageDown>", ":bnext<CR>", opts)
 keymap("n", "<c-PageUp>", ":bprevious<CR>", opts)
-keymap("n", "<a-w>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<a-w>", "<cmd>bdelete!<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -79,39 +79,39 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 -- some toggleterm related keymaps in user.toggleterm.
 
 -- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap(
 	"n",
 	"<leader>ff",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false, winblend = 10 }))<cr>",
+	"<cmd>Telescope find_files theme=dropdown previewer=false winblend=10<CR>",
 	opts
 )
 keymap(
 	"n",
 	"<leader>sf",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ winblend = 10 }))<cr>",
+	"<cmd>Telescope find_files theme=dropdown winblend=10<CR>",
 	opts
 )
 keymap(
 	"n",
 	"<leader>fe",
-	"<cmd>Telescope find_files theme=dropdown previewer=false cwd=~/.config/nvim/<cr>",
+	"<cmd>Telescope find_files theme=dropdown previewer=false cwd=~/.config/nvim/<CR>",
 	opts
 )
-keymap("n", "<leader>st", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
-keymap("n", "<leader>sp", "<cmd>Telescope projects theme=dropdown winblend=10<cr>", opts)
-keymap("n", "<leader>sk", "<cmd>Telescope keymaps<cr>", opts)
-keymap("n", "<leader>sb", "<cmd>Telescope buffers theme=dropdown winblend=10<cr>", opts)
-keymap("n", "<leader>sc", "<cmd>Telescope commands<cr>", opts)
-keymap("n", "<leader>sh", "<cmd>Telescope help_tags<cr>", opts)
-keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", opts)
-keymap("n", "<leader>fr", "<cmd>Telescope oldfiles previewer=false theme=dropdown winblend=10<cr>", opts)
+keymap("n", "<leader>st", "<cmd>Telescope live_grep<CR>", opts)
+keymap("n", "<leader>sp", "<cmd>Telescope projects theme=dropdown winblend=10<CR>", opts)
+keymap("n", "<leader>sk", "<cmd>Telescope keymaps<CR>", opts)
+keymap("n", "<leader>sb", "<cmd>Telescope buffers theme=dropdown winblend=10<CR>", opts)
+keymap("n", "<leader>sc", "<cmd>Telescope commands<CR>", opts)
+keymap("n", "<leader>sh", "<cmd>Telescope help_tags<CR>", opts)
+keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<CR>", opts)
+keymap("n", "<leader>fr", "<cmd>Telescope oldfiles previewer=false theme=dropdown winblend=10<CR>", opts)
 keymap(
 	"n",
 	"<leader>/",
-	"<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({previewer = false, winblend = 10}), {sorting_strategy='ascending'})<cr>",
+	"<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({previewer = false, winblend = 10}), {sorting_strategy='ascending'})<CR>",
 	opts
 )
 -- and many in user.telescope for when telescope buffer is open.
@@ -121,9 +121,9 @@ keymap(
 -- cmp completion related plugins are in user.cmp
 
 -- LSP
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format {async = true } <cr>", opts)
-keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-keymap("n", "<leader>lI", "<cmd>Mason<cr>", opts)
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format {async = true } <CR>", opts)
+keymap("n", "<leader>li", "<cmd>LspInfo<CR>", opts)
+keymap("n", "<leader>lI", "<cmd>Mason<CR>", opts)
 keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
