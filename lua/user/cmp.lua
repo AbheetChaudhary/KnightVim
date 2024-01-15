@@ -22,11 +22,15 @@ luasnip.snippets = {
 	html = {},
 }
 luasnip.snippets.javascript = luasnip.snippets.html
+luasnip.snippets.typescript = luasnip.snippets.html
 luasnip.snippets.javascriptreact = luasnip.snippets.html
 luasnip.snippets.typescriptreact = luasnip.snippets.html
 
 luasnip.filetype_extend("javascript", { "javascriptreact" })
 luasnip.filetype_extend("javascript", { "html" })
+
+luasnip.filetype_extend("typescript", { "javascriptreact" })
+luasnip.filetype_extend("typescript", { "html" })
 
 require("luasnip/loaders/from_vscode").load({ include = { "html" } })
 require("luasnip/loaders/from_vscode").lazy_load()

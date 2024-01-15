@@ -3,7 +3,9 @@ if not status_ok then
 	return
 end
 
-require('nvim-ts-autotag').setup()
+require('nvim-ts-autotag').setup({
+  filetypes = { "html" , "xml", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+})
 
 configs.setup({
 	ensure_installed = { "c", "lua", "python", "rust", "javascript", "typescript", "vim", "vimdoc", "query", "html", "css", "scss", "json", "markdown", "scheme", "solidity" },
@@ -20,7 +22,7 @@ configs.setup({
 		disable = { "" }, -- list of language that will be disabled
 		additional_vim_regex_highlighting = false,
 	},
-	indent = { enable = true, disable = { "yaml", "python" , "rust"} },
+	indent = { enable = true, disable = { "yaml", "python" , "rust", "javascript", "typescript"} },
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,

@@ -14,65 +14,73 @@ vim.opt.rtp:prepend(lazypath)
 local supported = require("user.supported")
 
 local opts = {
-  ui = {
-    border = 'rounded',
-  },
+	ui = {
+		border = "rounded",
+	},
 }
 
 local plugins = {
 	{
-		"catppuccin/nvim",
-    name = "catppuccin",
+		"tanvirtin/monokai.nvim",
 		lazy = true,
-    -- priority = 1000,
-    config = function ()
-      vim.cmd('colorschem catppuccin')
-    end,
+		config = function()
+			vim.cmd("colorscheme monokai")
+		end,
+	},
+
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = true,
+		-- priority = 1000,
+		config = function()
+			vim.cmd("colorschem catppuccin")
+		end,
 	},
 
 	{
 		"lunarvim/darkplus.nvim",
 		lazy = true,
-    -- priority = 1000,
-    config = function ()
-      vim.cmd('colorschem darkplus')
-    end,
+		-- priority = 1000,
+		config = function()
+			vim.cmd("colorschem darkplus")
+		end,
 	},
 
 	{
 		"folke/tokyonight.nvim",
 		lazy = true,
-    -- priority = 1000,
-    config = function ()
-      vim.cmd('colorschem tokyonight-moon')
-    end,
+		-- priority = 1000,
+		config = function()
+			vim.cmd("colorschem tokyonight-moon")
+		end,
 	},
 
 	{
 		"navarasu/onedark.nvim",
 		lazy = false,
-    priority = 1000,
-    config = function ()
-      require('user.onedark')
-    end,
+		priority = 1000,
+		config = function()
+			require("user.onedark")
+		end,
 	},
 
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = true,
-    -- priority = 1000,
-    config = function ()
-      vim.cmd('colorschem kanagawa-wave')
-    end,
+		-- priority = 1000,
+		config = function()
+			vim.cmd("colorschem kanagawa-wave")
+		end,
 	},
 
 	{
 		"EdenEast/nightfox.nvim",
 		lazy = true,
-    -- priority = 1000,
-    config = function ()
-      vim.cmd('colorschem nordfox')
-    end,
+		-- priority = 1000,
+		config = function()
+			vim.cmd("colorschem nordfox")
+		end,
 	},
 
 	{
@@ -94,7 +102,7 @@ local plugins = {
 
 	{
 		"lewis6991/gitsigns.nvim",
-    priority = 850,
+		priority = 850,
 		config = function()
 			require("gitsigns").setup()
 		end,
@@ -128,7 +136,7 @@ local plugins = {
 
 	{
 		"nvim-lualine/lualine.nvim",
-    priority = 750,
+		priority = 750,
 		config = function()
 			require("user.lualine")
 		end,
@@ -138,6 +146,7 @@ local plugins = {
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		cmd = "NvimTreeToggle",
+		commit = "6a99f5af78b5dd531d49ec0a5158dd0f9a7c992b",
 		config = function()
 			require("user.nvim-tree")
 		end,
@@ -187,7 +196,7 @@ local plugins = {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		ft = supported.nullLs,
-    commit = "db09b6c691def0038c456551e4e2772186449f35",
+		commit = "db09b6c691def0038c456551e4e2772186449f35",
 		config = function()
 			require("user.lsp.null-ls")
 		end,
@@ -226,14 +235,14 @@ local plugins = {
 		dependencies = "williamboman/mason-lspconfig",
 	},
 
-  {
-    "j-hui/fidget.nvim",
-    tag = "legacy",
-    event = "LspAttach",
-    opts = {
-      -- options
-    },
-  },
+	{
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		event = "LspAttach",
+		opts = {
+			-- options
+		},
+	},
 
 	{
 		"phaazon/hop.nvim",
@@ -276,6 +285,18 @@ local plugins = {
 	{
 		"windwp/nvim-ts-autotag",
 		lazy = true,
+	},
+
+	{
+		-- requires yarn/npm
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && yarn install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+			vim.g.mkdp_auto_close = 0 -- do not autoclose preview when changing buffer from markdown file
+		end,
+		ft = { "markdown" },
 	},
 
 	-- lisp family

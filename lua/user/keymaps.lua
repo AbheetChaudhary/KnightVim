@@ -145,7 +145,7 @@ keymap("n", "<C-s>",  "<cmd>lua require'harpoon.ui'.nav_file(4)<CR>", opts)
 -- JABS
 keymap("n", "<leader>bj",  "<cmd>JABSOpen<CR>", opts)  -- a few more in user.jabs
 
---cybu
+--cybu -- need to remove this...or rethink may be
 vim.keymap.set("n", "[b", "<Plug>(CybuLastusedPrev)")
 vim.keymap.set("n", "]b", "<Plug>(CybuLastusedNext)")
 vim.keymap.set("n", "<S-h>", "<plug>(CybuPrev)")

@@ -18,8 +18,8 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.prettier.with({
-			filetypes = { "html", "css", "javascript", "json", "javascriptreact", "markdown" },
-			extra_args = { "--single-quote", "--jsx-single-quote" },
+			filetypes = { "html", "css", "javascript", "typescript", "json", "javascriptreact", "markdown" },
+			-- extra_args = { "--single-quote", "--jsx-single-quote" },
 		}),
 		formatting.black.with({ extra_args = { "--fast", "--line-length=80" }, filetypes = { "python" } }),
 		-- formatting.yapf,

@@ -101,9 +101,6 @@ local on_attach = function(client, bufnr)
 	if client.name == "lua_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
-	if client.name == "tsserver" then
-		client.server_capabilities.documentFormattingProvider = false
-	end
 end
 
 local lsp_flags = {
@@ -121,6 +118,14 @@ require("lspconfig")["arduino_language_server"].setup({
 	filetypes = { "arduino" },
 })
 
+require("lspconfig")["cssls"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+
+	filetypes = { "css", "scss", "less" },
+})
+
 require("lspconfig")["clangd"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
@@ -135,6 +140,21 @@ require("lspconfig")["dockerls"].setup({
 	capabilities = capabilities,
 
 	filetypes = { "dockerfile" },
+})
+
+require("lspconfig")["gopls"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+
+})
+
+require("lspconfig")["hls"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+
+	filetypes = { "haskell", "lhaskell", "cabal" },
 })
 
 require("lspconfig")["jsonls"].setup({
@@ -168,9 +188,16 @@ require("lspconfig")["jdtls"].setup({
 	-- single_file_support = require("user.lsp.settings.jdtls").single_file_support,
 })
 
+require("lspconfig")["kotlin_language_server"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+	filetypes = { "kotlin" },
+})
+
 require("lspconfig").omnisharp.setup({
-  cmd = { "/home/goliath/.omnisharp/OmniSharp" },
-  on_attach = on_attach,
+	cmd = { "/home/goliath/.omnisharp/OmniSharp" },
+	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
 })
@@ -187,6 +214,13 @@ require("lspconfig")["rust_analyzer"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
+
+	cmd = {
+		"rustup",
+		"run",
+		"stable",
+		"rust-analyzer",
+	},
 })
 
 require("lspconfig")["lua_ls"].setup({
@@ -201,31 +235,9 @@ require("lspconfig")["tsserver"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
-})
 
-require("lspconfig")["tailwindcss"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
-
-	filetypes = {
-		"django-html",
-		"htmldjango",
-		"gohtml",
-		"html",
-		"html-eex",
-		"php",
-		"css",
-		"less",
-		"postcss",
-		"sass",
-		"scss",
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-		"vue",
-		"svelte",
+	preferences = {
+		disableSuggestions = true,
 	},
 })
 

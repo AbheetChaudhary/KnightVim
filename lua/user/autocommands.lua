@@ -2,7 +2,18 @@ local _general_settings = vim.api.nvim_create_augroup("_general_settings", { cle
 vim.api.nvim_create_autocmd("FileType", {pattern = { "qf", "help", "man", "lspinfo" }, command = "nnoremap <silent> <buffer> q :close<CR>", group = _general_settings })
 vim.api.nvim_create_autocmd("FileType", {pattern = { "qf" }, command = "set nobuflisted", group = _general_settings })
 vim.api.nvim_create_autocmd("TextYankPost", {pattern = { "*" }, command = "silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})", group = _general_settings })
-vim.api.nvim_create_autocmd("BufWinEnter", {pattern = { "*" }, command = ":set formatoptions-=cro | :set showtabline=1", group = _general_settings })
+
+-- this next autocmd used to avoid printing the comment leader on the next
+-- comment line. But this is a desired behaviour now. This becomes unwanted
+-- again in languages which have different leaders for single and multiline
+-- comments and it repeats the single line comment leader. To quickly remove it
+-- press CTRL-U in insert mode. But for languages where the single line leader
+-- strts with `//` there vim has a builtin formatoption which avoids this
+-- behaviour when the single line comment is present after a statement. This is
+-- whats currently being used. See `formatoptions` and `fo-table` for more
+-- details. 
+-- vim.api.nvim_create_autocmd("BufWinEnter", {pattern = { "*" }, command = ":set formatoptions-=cro | :set showtabline=1", group = _general_settings })
+vim.api.nvim_create_autocmd("BufWinEnter", {pattern = { "*" }, command = ":set formatoptions+=/ | :set showtabline=1", group = _general_settings })
 
 local _git = vim.api.nvim_create_augroup("_git", { clear = true })
 vim.api.nvim_create_autocmd("FileType", { pattern = "gitcommit", command = "setlocal wrap", group = _git })
@@ -68,4 +79,3 @@ vim.api.nvim_create_autocmd("User", { pattern = "AlphaReady", command = "set las
 -- 	end,
 -- 	group = cybu,
 -- })
-

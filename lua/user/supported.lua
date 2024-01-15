@@ -1,15 +1,20 @@
 Support = {
 
-  -- treesitter
+	-- treesitter
 	ts = {
+		"arduino",
 		"c",
 		"cs",
+		"cpp",
+		"go",
+		"haskell",
 		"lua",
 		"python",
 		"rust",
 		"java",
 		"javascript",
 		"javascriptreact",
+		"kotlin",
 		"typescript",
 		"typescriptreact",
 		"vim",
@@ -22,9 +27,10 @@ Support = {
 		"markdown",
 		"scheme",
 		"solidity",
+		"toml",
 	},
 
-  -- null-ls
+	-- null-ls
 	nullLs = {
 		"c",
 		"cs",
@@ -35,6 +41,7 @@ Support = {
 		"java",
 		"javascript",
 		"javascriptreact",
+		"kotlin",
 		"typescript",
 		"typescriptreact",
 		"html",
@@ -45,17 +52,21 @@ Support = {
 		"solidity",
 	},
 
-  -- lsp
+	-- lsp
 	lsp = {
+		"arduino",
 		"c",
 		"cs",
 		"cpp",
+		"go",
+		"haskell",
 		"lua",
 		"python",
 		"rust",
 		"java",
 		"javascript",
 		"javascriptreact",
+		"kotlin",
 		"typescript",
 		"typescriptreact",
 		"html",
@@ -64,6 +75,7 @@ Support = {
 		"json",
 		"markdown",
 		"solidity",
+		"toml",
 	},
 }
 
